@@ -4,6 +4,7 @@ scn/
 /screenshot.png
 /snapshot.png
 *.tpm
+imgs/
 
 # Godot-specific ignores
 .import/
