@@ -7,7 +7,7 @@ extends Control
 var anzahlHiddenlayer = 0
 var anzahlInputs = 1
 var anzahlOutputs = 1
-var neuronenProHiddenlayer = [1,0]
+var neuronenProHiddenlayer = []
 var inputs = []
 var outputs = []
 onready var inputContainer = $VBoxContainer/HBoxContainer4/VBoxContainer/Inputs
@@ -87,7 +87,11 @@ func _on_run_pressed():
 		outputs.append([])
 		for j in outputContainer.get_child(i).get_child_count()-1:
 			outputs[i].append( int(outputContainer.get_child(i).get_child(j+1).text))
-	print(outputs)
+	var aProSpalte= []
+	aProSpalte[0] = anzahlInputs
+	aProSpalte.append_array(neuronenProHiddenlayer)
+	aProSpalte[aProSpalte.size()-1] = anzahlOutputs
+	get_parent().get_node("ArchitectureDiagramm").changeDiagramm(anzahlHiddenlayer+2, neuronenProHiddenlayer)
 
 
 func _on_addOneLine_pressed():
@@ -100,7 +104,7 @@ func _on_addOneLine_pressed():
 
 
 func _on_deleteOneLine_pressed():
-	if inputContainer.get_child(0).get_child_count() > 1:
+	if inputContainer.get_child(0).get_child_count() > 2:
 		print(inputContainer.get_child_count()-1)
 		for i in inputContainer.get_child_count():
 			inputContainer.get_child(i).get_child(inputContainer.get_child(i).get_child_count()-1).queue_free()

@@ -34,7 +34,32 @@ func _ready():
 		print(grid.get_child(i))
 	$Timer.start()
 
+func changeDiagramm(Anzahl, aProSpalte):
+	for i in grid.get_child_count():
+		grid.get_child(i).queue_free()
+	print(Anzahl)
+	print(aProSpalte)
+	Spaltenanzahl = Anzahl
+	anzahlProSpalte = aProSpalte
+	for i in Spaltenanzahl:
+		var newSpalte = spalte.duplicate()
+		
+#		var parent = newSpalte.get_parent()
+#		print(parent)
+#		parent.remove_child(newSpalte);
+		grid.add_child(newSpalte)
 
+		if Spaltenanzahl > anzahlProSpalte.size():
+			for j in Spaltenanzahl - anzahlProSpalte.size():
+				anzahlProSpalte.append(1)
+		for j in anzahlProSpalte[i]:
+			if j <11:
+				newSpalte.get_child(j).visible = true
+				
+			else:
+				break
+	$Timer.start()
+	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass

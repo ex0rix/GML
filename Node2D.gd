@@ -19,7 +19,7 @@ func _process(delta):
 var spaltenAnzahl
 var anzahlProSpalte
 func setDrawPoints( uebergabeSpaltenAnzahl, uebergabeAnzahlProSpalte ):
-	print(spaltenAnzahl)
+	
 	beginnDraw = true
 	spaltenAnzahl = uebergabeSpaltenAnzahl
 	anzahlProSpalte = uebergabeAnzahlProSpalte

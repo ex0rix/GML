@@ -16,7 +16,6 @@ margin_top = 5.0
 margin_right = 167.0
 margin_bottom = 19.0
 text = "Nummer der Hiddenlayer:"
-percent_visible = -0.047619
 
 [node name="anzahlHiddenlayer" type="LineEdit" parent="HBoxContainer"]
 margin_left = 171.0
