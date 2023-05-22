@@ -14,15 +14,23 @@ var chartFuncs = [Function.new(
 
 var run = true
 
-var trainSetAnd = {
+var trainSetAND = {
+	"inputs" : [[0.0, 0.0], [0.0, 1.0], [1.0, 0.0], [1.0, 1.0]],
+	"outputs" : [[0.0], [0.0], [0.0], [1.0]]
+}
+
+var trainSetXOR = {
 	"inputs" : [[0.0, 0.0], [0.0, 1.0], [1.0, 0.0], [1.0, 1.0]],
 	"outputs" : [[0.0], [1.0], [1.0], [0.0]]
 }
 
+var curDataSet = trainSetXOR
+
 func _ready():
-	neuralNetwork = NeuralNetwork.new([2, 4, 1], 5.1)
+	neuralNetwork = NeuralNetwork.new([2, 8, 1], -0.3)
 	seed(42069)
-	neuralNetwork._radomize_weights()
+	#randomize()
+	neuralNetwork.radomize_weights(1.9)
 	
 	chart.plot(chartFuncs, initContext())
 
@@ -32,27 +40,30 @@ var bestVars = null
 func _process(delta):
 	if run:
 		var totalError = 0.0
-		var nTrainingSets = trainSetAnd["inputs"].size()
+		var nTrainingSets = curDataSet["inputs"].size()
 		for i in nTrainingSets:
-			var outputs = neuralNetwork.calc(trainSetAnd["inputs"][i])
+			var outputs = neuralNetwork.calc(curDataSet["inputs"][i])
 			##Only ONE output at moment TODO array lenght
-			var outputDif = pow(trainSetAnd["outputs"][i][0] - outputs[0], 2)
+			var outputDif = pow(curDataSet["outputs"][i][0] - outputs[0], 2)
 			totalError += outputDif
 		totalError = totalError / nTrainingSets
 		
-		if bestOutputDif > totalError:# || iter % 100 == 0:
+		if bestOutputDif > totalError:# || iter % 500 == 0:
 			bestOutputDif = totalError
 			##Print debug###
 			print(iter, ": ", bestOutputDif)
 			for i in nTrainingSets:
-				print(trainSetAnd["inputs"][i], " => ",neuralNetwork.calc(trainSetAnd["inputs"][i]))
+				print(curDataSet["inputs"][i], " => ",neuralNetwork.calc(curDataSet["inputs"][i]))
 		chartFuncs[0].add_point(iter, totalError)
 		
-		#neuralNetwork._radomize_weights()
+		neuralNetwork.radomize_weights(-1.1)
 		
 		##Only ONE output at moment TODO array lenght
 		var i = randi() % 4
-		neuralNetwork.backProp(trainSetAnd["inputs"][i] , [totalError])
+		#neuralNetwork.backProp(trainSetXOR["inputs"][i] , [totalError])
+	
+	if iter % 1000 == 0:
+		neuralNetwork.netDebug()
 	
 	##Saves performance
 	if iter % 10 == 0:

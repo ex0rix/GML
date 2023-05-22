@@ -11,10 +11,10 @@ func _init(nLayer : Array, stepSize):
 			_neuronLayers[i].append(Neuron.new(nLayer[i]))
 	to_string()
 	
-func _radomize_weights():
+func radomize_weights(randRange):
 	for i in _neuronLayers.size():
 		for j in _neuronLayers[i].size():
-			_neuronLayers[i][j]._randomize_weights(_stepSize)
+			_neuronLayers[i][j]._randomize_weights(randRange)
 
 func calc(inputValues):
 	var prefLayerValues = inputValues
@@ -28,23 +28,15 @@ func calc(inputValues):
 func backProp(inputValues, costValues):
 	for i in _neuronLayers.size():
 		var curLayer = _neuronLayers.size() - 1 - i
-		print(curLayer)
-		var connectedDeltas := []
-		for j in _neuronLayers[curLayer].size():
-			if curLayer == _neuronLayers.size() - 1:
-				connectedDeltas.append(costValues[j])
-			else:
-				connectedDeltas.append(_neuronLayers[curLayer][j].getDelta())
-		
+		var connectedDeltas := []	
 		if curLayer == _neuronLayers.size() - 1:
 			for j in _neuronLayers[curLayer].size():
-				connectedDeltas.append(1.0)
+				connectedDeltas.append(costValues[j])
 		else:
 			for j in _neuronLayers[curLayer+1].size():
 				connectedDeltas.append(_neuronLayers[curLayer+1][j].getDelta())
-		print(connectedDeltas)
 		
-		print(connectedDeltas)
+		#print(connectedDeltas)
 		for nNeuron in _neuronLayers[curLayer].size():
 			var connectedWeights := []
 			if curLayer == _neuronLayers.size() - 1:
@@ -53,7 +45,7 @@ func backProp(inputValues, costValues):
 			else:
 				for j in _neuronLayers[curLayer+1].size():
 					connectedWeights.append(_neuronLayers[curLayer+1][j].getWeight(nNeuron))
-			print(connectedWeights)
+			#print(connectedWeights)
 			_neuronLayers[curLayer][nNeuron].calcDelta(connectedDeltas, connectedWeights)
 	
 
@@ -94,3 +86,11 @@ func to_string():
 		for j in _neuronLayers[i].size():
 			printStr += String(_neuronLayers[i][j].getWeights())
 		print(printStr)
+
+func netDebug():
+	for i in _neuronLayers.size():
+		var printStr = ""
+		for j in _neuronLayers[i].size():
+			printStr += " d : " + String(_neuronLayers[i][j].getDelta()) +  "; w : " + String(_neuronLayers[i][j].getWeights()) + "\t"
+		print(printStr)
+	print("\n=== <> ===\n")

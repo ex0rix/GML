@@ -39,15 +39,16 @@ func calcDelta(connectedDeltas : Array, connectedWeights : Array):
 	for i in connectedDeltas.size():
 		error += connectedDeltas[i] * connectedWeights[i]
 	_delta = error * _sigmoidDx(_output)
+	#print(_delta)
 
 func applyDelta(neuronInputs : Array, stepSize):
 	 ##deltaBias = delta * stepSize
 	_bias += _delta * stepSize
-	##deltaWeight = stepSize 
+	##deltaWeight = stepSize
 	for i in _weights.size():
-		_weights[i] += stepSize * _delta * neuronInputs[i]
+		_weights[i] += stepSize * _delta# * neuronInputs[i]
 
 func _randomize_weights(stepSize):
 	for i in _weights.size():
-		_weights[i] = clamp(_weights[i] + stepSize * 10.5 * (randf() - 0.5), -5.0, 5.0)
-	_bias = clamp(_bias + stepSize * 10.5 * (randf() - 0.5), -5.0, 5.0)
+		_weights[i] = clamp(_weights[i] + stepSize * (randf() - 0.5), -5.0, 5.0)
+	_bias = clamp(_bias + stepSize * (randf() - 0.5), -5.0, 5.0)
