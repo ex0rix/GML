@@ -20,11 +20,11 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 
 
-
-
 func _on_anzahlHiddenlayer_text_changed(new_text):
 	anzahlHiddenlayer = int(new_text)
 	if int(new_text) > 0:
+		if anzahlHiddenlayer > 9:
+			anzahlHiddenlayer = 9
 		$VBoxContainer/VBoxContainer2.visible = true
 	else:
 		$VBoxContainer/VBoxContainer2.visible = false
@@ -32,12 +32,7 @@ func _on_anzahlHiddenlayer_text_changed(new_text):
 
 
 
-
-
-
-
-
-func _on_anzahlInputs_text_entered(new_text):
+func _on_anzahlInputs_text_changed(new_text):
 	anzahlInputs = int(new_text)
 	if anzahlInputs > 9:
 		anzahlInputs = 9
@@ -50,7 +45,8 @@ func _on_anzahlInputs_text_entered(new_text):
 		anzahlInputs = 1
 		inputContainer.get_child(0).visible = true
 
-func _on_anzahlOutputs_text_entered(new_text):
+
+func _on_anzahlOutputs_text_changed(new_text):
 	anzahlOutputs = int(new_text)
 	if anzahlOutputs > 9:
 		anzahlOutputs = 9
@@ -65,12 +61,17 @@ func _on_anzahlOutputs_text_entered(new_text):
 
 	
 
-func _on_neuronenProHiddenlayer_text_entered(new_text):
+func _on_neuronenProHiddenlayer_text_changed(new_text):
 	neuronenProHiddenlayer.clear()
 	var stringNeuronenProHiddenlayer = new_text.split(",")
 	for i in stringNeuronenProHiddenlayer.size():
 		if int(stringNeuronenProHiddenlayer[i]) != null:
-			neuronenProHiddenlayer.append( int(stringNeuronenProHiddenlayer[i]))
+			if int(stringNeuronenProHiddenlayer[i]) >9:
+				neuronenProHiddenlayer.append(9)
+			elif int(stringNeuronenProHiddenlayer[i]) <1:
+				neuronenProHiddenlayer.append(1)
+			else:
+				neuronenProHiddenlayer.append( int(stringNeuronenProHiddenlayer[i]))
 	print(neuronenProHiddenlayer)
 
 
@@ -79,6 +80,9 @@ func _on_neuronenProHiddenlayer_text_entered(new_text):
 func _on_run_pressed():
 	inputs.clear()
 	outputs.clear()
+	print("TESSST "+ String(neuronenProHiddenlayer))
+	var nPH = []
+	nPH.append_array(neuronenProHiddenlayer)
 	for i in anzahlInputs:
 		inputs.append([])
 		for j in inputContainer.get_child(i).get_child_count()-1:
@@ -88,10 +92,29 @@ func _on_run_pressed():
 		for j in outputContainer.get_child(i).get_child_count()-1:
 			outputs[i].append( int(outputContainer.get_child(i).get_child(j+1).text))
 	var aProSpalte= []
-	aProSpalte[0] = anzahlInputs
-	aProSpalte.append_array(neuronenProHiddenlayer)
-	aProSpalte[aProSpalte.size()-1] = anzahlOutputs
-	get_parent().get_node("ArchitectureDiagramm").changeDiagramm(anzahlHiddenlayer+2, neuronenProHiddenlayer)
+	aProSpalte.append(anzahlInputs)
+
+	print("asssssafasf:"+String(anzahlHiddenlayer))
+	for i in anzahlHiddenlayer:
+		if i > nPH.size()-1:
+			nPH.append(1)
+		if i == anzahlHiddenlayer-1 && nPH.size()-(i+1) >0:
+			print("qaaaaaaaaaaaaasdasdddddd")
+			print(i)
+			print(nPH.size()-(i+1))
+			print("qaaaaaaaaaaaaasdasdddddd")
+			for j in neuronenProHiddenlayer.size()-(i+1):
+				nPH.remove(nPH.size()-1)
+				#nPH.pop_back()
+
+	
+	aProSpalte.append_array(nPH)
+	
+	aProSpalte.append(anzahlOutputs)
+	
+	print(aProSpalte)
+	if (get_parent().get_node("ArchitectureDiagramm") != null):
+		get_parent().get_node("ArchitectureDiagramm").changeDiagramm(anzahlHiddenlayer+2, aProSpalte)
 
 
 func _on_addOneLine_pressed():

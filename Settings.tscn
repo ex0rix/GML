@@ -952,8 +952,9 @@ size_flags_vertical = 0
 text = "run"
 
 [connection signal="text_changed" from="HBoxContainer/anzahlHiddenlayer" to="." method="_on_anzahlHiddenlayer_text_changed"]
-[connection signal="text_entered" from="VBoxContainer/HBoxContainer2/anzahlInputs" to="." method="_on_anzahlInputs_text_entered"]
-[connection signal="text_entered" from="VBoxContainer/VBoxContainer2/neuronenProHiddenlayer" to="." method="_on_neuronenProHiddenlayer_text_entered"]
+[connection signal="text_changed" from="VBoxContainer/HBoxContainer2/anzahlInputs" to="." method="_on_anzahlInputs_text_changed"]
+[connection signal="text_changed" from="VBoxContainer/VBoxContainer2/neuronenProHiddenlayer" to="." method="_on_neuronenProHiddenlayer_text_changed"]
+[connection signal="text_changed" from="VBoxContainer/HBoxContainer3/anzahlOutputs" to="." method="_on_anzahlOutputs_text_changed"]
 [connection signal="text_entered" from="VBoxContainer/HBoxContainer3/anzahlOutputs" to="." method="_on_anzahlOutputs_text_entered"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer5/addOneLine" to="." method="_on_addOneLine_pressed"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer5/deleteOneLine" to="." method="_on_deleteOneLine_pressed"]

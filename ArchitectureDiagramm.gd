@@ -14,12 +14,12 @@ export(Array,int) var anzahlProSpalte = [51,5,3,9,2,11]
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	for i in Spaltenanzahl:
-		var newSpalte = spalte.duplicate()
-		print(newSpalte)
-#		var parent = newSpalte.get_parent()
-#		print(parent)
-#		parent.remove_child(newSpalte);
-		grid.add_child(newSpalte)
+		var newSpalte
+		if i > 0:
+			newSpalte = spalte.duplicate()
+			grid.add_child(newSpalte)
+		else:
+			newSpalte = grid.get_child(0)
 
 		if Spaltenanzahl > anzahlProSpalte.size():
 			for j in Spaltenanzahl - anzahlProSpalte.size():
@@ -36,18 +36,23 @@ func _ready():
 
 func changeDiagramm(Anzahl, aProSpalte):
 	for i in grid.get_child_count():
-		grid.get_child(i).queue_free()
+		if i> 0:
+			grid.get_child(i).queue_free()
+		else:
+			for j in 9:
+					grid.get_child(0).get_child(j).visible = false
+
 	print(Anzahl)
 	print(aProSpalte)
 	Spaltenanzahl = Anzahl
 	anzahlProSpalte = aProSpalte
 	for i in Spaltenanzahl:
-		var newSpalte = spalte.duplicate()
-		
-#		var parent = newSpalte.get_parent()
-#		print(parent)
-#		parent.remove_child(newSpalte);
-		grid.add_child(newSpalte)
+		var newSpalte
+		if i > 0:
+			newSpalte = spalte.duplicate()
+			grid.add_child(newSpalte)
+		else:
+			newSpalte = grid.get_child(0)
 
 		if Spaltenanzahl > anzahlProSpalte.size():
 			for j in Spaltenanzahl - anzahlProSpalte.size():

@@ -6,10 +6,10 @@
 [node name="Scene test" type="Node2D"]
 
 [node name="ArchitectureDiagramm" parent="." instance=ExtResource( 1 )]
-margin_left = 249.0
-margin_top = 4.0
-margin_right = 844.0
-margin_bottom = 294.0
+margin_left = 405.0
+margin_top = 18.0
+margin_right = 1000.0
+margin_bottom = 308.0
 
 [node name="Settings" parent="." instance=ExtResource( 2 )]
 margin_left = 8.0
