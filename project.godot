@@ -109,11 +109,6 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://NeuralNetwork.gd"
 }, {
-"base": "Reference",
-"class": "Neuron",
-"language": "GDScript",
-"path": "res://Neuron.gd"
-}, {
 "base": "FunctionPlotter",
 "class": "PiePlotter",
 "language": "GDScript",
@@ -140,7 +135,7 @@ _global_script_class_icons={
 "Bar": "",
 "BarPlotter": "",
 "Canvas": "",
-"Chart": "res://addons/easy_charts/utilities/icons/linechart.svg",
+"Chart": "",
 "ChartProperties": "",
 "DataFrame": "",
 "DataTooltip": "",
@@ -155,7 +150,6 @@ _global_script_class_icons={
 "Matrix": "",
 "MatrixGenerator": "",
 "NeuralNetwork": "",
-"Neuron": "",
 "PiePlotter": "",
 "PlotBox": "",
 "Point": "",
@@ -185,4 +179,3 @@ common/enable_pause_aware_picking=true
 quality/driver/driver_name="GLES2"
 vram_compression/import_etc=true
 vram_compression/import_etc2=false
-environment/default_environment="res://default_env.tres"

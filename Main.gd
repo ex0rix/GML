@@ -1,32 +1,31 @@
 extends Node
 
 
-#class Neuron:
-#	var _weights : Array
-#	var _bias : float
-#	var _stepSize : float
-#
-#	func _init(nInputs, stepSize):
-#		self._stepSize = stepSize
-#		_weights.resize(2)
-#		_weights.fill(0.0)
-#
-#
-#	func _aF(x):
-#		return x
-##		if x > 0:
-##			return x
-##		return 0
-#
-#	func calc(values : Array) -> float:
-#		var x = 0.0
-#		for i in values.size():
-#			x += values[i] * _weights[i]
-#		return _aF(x) + _bias
-#
-#	func _randomize_weights():
-#		for i in _weights.size():
-#			_weights[i] = clamp(_weights[i] + _stepSize * (randf() - 0.5), -1.0, 1.0)
+class Neuron:
+	var _weights : Array
+	var _bias : float
+	var _stepSize : float
+
+	func _init(nInputs, stepSize):
+		self._stepSize = stepSize
+		_weights.resize(2)
+		_weights.fill(0.0)
+
+	func _aF(x):
+		return x
+#		if x > 0:
+#			return x
+#		return 0
+
+	func calc(values : Array) -> float:
+		var x = 0.0
+		for i in values.size():
+			x += values[i] * _weights[i]
+		return _aF(x) + _bias
+
+	func _randomize_weights():
+		for i in _weights.size():
+			_weights[i] = clamp(_weights[i] + _stepSize * (randf() - 0.5), -1.0, 1.0)
 
 
 
@@ -154,7 +153,7 @@ func _ready():
 		resetNum = 50,
 		fitnessMult = 1.9
 	}]
-	
+	randomize()
 	chart.plot(chartFuncs, initContext())
 
 onready var chart: Chart = $Chart
@@ -243,6 +242,7 @@ func updateNeuron(neuronEnv, iter):
 	if neuronEnv.resetNum > 0 and iter % neuronEnv.resetNum == 0:
 		#print("\n === reset Weights === \n - ", iter ," -\n")
 		neuronEnv.neuron._weights.clear()
+
 		neuronEnv.neuron._weights.append_array(neuronEnv.bestWeights)
 		#print("Best Weights : ", neuronEnv.neuron._weights, "; fitness : ", neuronEnv.bestOutputDif)
 		#print("Cur Weights : ", sNeuron._weights, "; fitness : ", avgOutputDif, "; stepSize : ", sNeuron._stepSize)
