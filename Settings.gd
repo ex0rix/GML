@@ -5,7 +5,7 @@ extends Control
 # var a = 2
 # var b = "text"
 var anzahlHiddenlayer = 0
-var anzahlInputs = 1
+var anzahlInputs = 2
 var anzahlOutputs = 1
 var neuronenProHiddenlayer = []
 var inputs = []
@@ -83,26 +83,24 @@ func _on_run_pressed():
 	print("TESSST "+ String(neuronenProHiddenlayer))
 	var nPH = []
 	nPH.append_array(neuronenProHiddenlayer)
-	for i in anzahlInputs:
+
+	for i in inputContainer.get_child(0).get_child_count()-1:
 		inputs.append([])
-		for j in inputContainer.get_child(i).get_child_count()-1:
-			inputs[i].append( int(inputContainer.get_child(i).get_child(j+1).text))
-	for i in anzahlOutputs:
+		for j in anzahlInputs:
+			inputs[i].append( int(inputContainer.get_child(j).get_child(i+1).text))
+	for i in outputContainer.get_child(0).get_child_count()-1:
 		outputs.append([])
-		for j in outputContainer.get_child(i).get_child_count()-1:
-			outputs[i].append( int(outputContainer.get_child(i).get_child(j+1).text))
+		for j in anzahlOutputs:
+			outputs[i].append( int(outputContainer.get_child(j).get_child(i+1).text))
+	print(outputs)
 	var aProSpalte= []
 	aProSpalte.append(anzahlInputs)
 
-	print("asssssafasf:"+String(anzahlHiddenlayer))
+
 	for i in anzahlHiddenlayer:
 		if i > nPH.size()-1:
 			nPH.append(1)
 		if i == anzahlHiddenlayer-1 && nPH.size()-(i+1) >0:
-			print("qaaaaaaaaaaaaasdasdddddd")
-			print(i)
-			print(nPH.size()-(i+1))
-			print("qaaaaaaaaaaaaasdasdddddd")
 			for j in neuronenProHiddenlayer.size()-(i+1):
 				nPH.remove(nPH.size()-1)
 				#nPH.pop_back()
