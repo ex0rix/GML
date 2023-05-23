@@ -4,20 +4,24 @@ extends Control
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
+
+export (NodePath) var architectureDiagrammPath
+var architectureDiagramm : Node
+
+signal run(nLayer, stepSize, curDataSet)
+
 var anzahlHiddenlayer = 0
 var anzahlInputs = 2
 var anzahlOutputs = 1
 var neuronenProHiddenlayer = []
 var inputs = []
 var outputs = []
-onready var inputContainer = $VBoxContainer/HBoxContainer4/VBoxContainer/Inputs
-onready var outputContainer = $VBoxContainer/HBoxContainer4/VBoxContainer2/outputs
-# Called when the node enters the scene tree for the first time.
+var stepSize = 0.0
+onready var inputContainer = $HBoxContainer/VBoxContainer/HBoxContainer4/VBoxContainer/Inputs
+onready var outputContainer = $HBoxContainer/VBoxContainer/HBoxContainer4/VBoxContainer2/outputs
+
 func _ready():
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
+	architectureDiagramm = get_node(architectureDiagrammPath)
 
 
 func _on_anzahlHiddenlayer_text_changed(new_text):
@@ -25,11 +29,9 @@ func _on_anzahlHiddenlayer_text_changed(new_text):
 	if int(new_text) > 0:
 		if anzahlHiddenlayer > 9:
 			anzahlHiddenlayer = 9
-		$VBoxContainer/VBoxContainer2.visible = true
+		$HBoxContainer/ValInput/VBoxContainer2.visible = true
 	else:
-		$VBoxContainer/VBoxContainer2.visible = false
-
-
+		$HBoxContainer/ValInput/VBoxContainer2.visible = false
 
 
 func _on_anzahlInputs_text_changed(new_text):
@@ -80,7 +82,7 @@ func _on_neuronenProHiddenlayer_text_changed(new_text):
 func _on_run_pressed():
 	inputs.clear()
 	outputs.clear()
-	print("TESSST "+ String(neuronenProHiddenlayer))
+	print("TEST "+ String(neuronenProHiddenlayer))
 	var nPH = []
 	nPH.append_array(neuronenProHiddenlayer)
 
@@ -110,15 +112,19 @@ func _on_run_pressed():
 	
 	aProSpalte.append(anzahlOutputs)
 	
-	print(aProSpalte)
-	if (get_parent().get_node("ArchitectureDiagramm") != null):
-		get_parent().get_node("ArchitectureDiagramm").changeDiagramm(anzahlHiddenlayer+2, aProSpalte)
+	if (architectureDiagramm != null):
+		architectureDiagramm.changeDiagramm(anzahlHiddenlayer+2, aProSpalte)
+	
+	var dataSet = {
+		"inputs" : [],
+		"outputs" : []
+	}
+	self.emit_signal("run", aProSpalte, stepSize, dataSet)
 
 
 func _on_addOneLine_pressed():
 	
 	for i in inputContainer.get_child_count():
-		print("asdasdaa")
 		inputContainer.get_child(i).add_child( inputContainer.get_child(i).get_child(1).duplicate())
 	for i in outputContainer.get_child_count():
 		outputContainer.get_child(i).add_child( outputContainer.get_child(i).get_child(1).duplicate())
@@ -131,3 +137,7 @@ func _on_deleteOneLine_pressed():
 			inputContainer.get_child(i).get_child(inputContainer.get_child(i).get_child_count()-1).queue_free()
 		for i in outputContainer.get_child_count():
 			outputContainer.get_child(i).get_child(outputContainer.get_child(i).get_child_count()-1).queue_free()
+
+
+func _on_stepSize_text_changed(new_text):
+	stepSize = float(new_text)
