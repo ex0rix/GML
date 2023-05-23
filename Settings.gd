@@ -4,6 +4,10 @@ extends Control
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
+
+export (NodePath) var architectureDiagrammPath
+var architectureDiagramm : Node
+
 var anzahlHiddenlayer = 0
 var anzahlInputs = 1
 var anzahlOutputs = 1
@@ -12,12 +16,9 @@ var inputs = []
 var outputs = []
 onready var inputContainer = $VBoxContainer/HBoxContainer4/VBoxContainer/Inputs
 onready var outputContainer = $VBoxContainer/HBoxContainer4/VBoxContainer2/outputs
-# Called when the node enters the scene tree for the first time.
+
 func _ready():
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
+	architectureDiagramm = get_node(architectureDiagrammPath)
 
 
 func _on_anzahlHiddenlayer_text_changed(new_text):
@@ -113,8 +114,8 @@ func _on_run_pressed():
 	aProSpalte.append(anzahlOutputs)
 	
 	print(aProSpalte)
-	if (get_parent().get_node("ArchitectureDiagramm") != null):
-		get_parent().get_node("ArchitectureDiagramm").changeDiagramm(anzahlHiddenlayer+2, aProSpalte)
+	if (architectureDiagramm != null):
+		architectureDiagramm.changeDiagramm(anzahlHiddenlayer+2, aProSpalte)
 
 
 func _on_addOneLine_pressed():

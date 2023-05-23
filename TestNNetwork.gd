@@ -1,6 +1,6 @@
 extends Node
 
-onready var chart: Chart = $Chart
+onready var chart: Chart = $HSplitContainer2/HSplitContainer/Container/Chart
 var neuralNetwork : NeuralNetwork
 
 var chartFuncs = [Function.new(
@@ -91,3 +91,6 @@ func initContext():
 	cp.y_scale = 2
 	cp.interactive = true # false by default, it allows the chart to create a tooltip to show point values
 	return cp
+
+func _on_HSplitContainer2_dragged(offset):
+	$HSplitContainer2/ScrollContainer/ArchitectureDiagramm.get_child(0).update()
