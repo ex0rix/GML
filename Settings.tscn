@@ -15,26 +15,9 @@ margin_bottom = 40.0
 margin_right = 229.0
 margin_bottom = 168.0
 
-[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/ValInput"]
-margin_right = 229.0
-margin_bottom = 24.0
-
-[node name="Label" type="Label" parent="HBoxContainer/ValInput/HBoxContainer"]
-margin_top = 5.0
-margin_right = 167.0
-margin_bottom = 19.0
-text = "Nummer der Hiddenlayer:"
-
-[node name="anzahlHiddenlayer" type="LineEdit" parent="HBoxContainer/ValInput/HBoxContainer"]
-margin_left = 171.0
-margin_right = 229.0
-margin_bottom = 24.0
-caret_blink = true
-
 [node name="HBoxContainer2" type="HBoxContainer" parent="HBoxContainer/ValInput"]
-margin_top = 28.0
 margin_right = 229.0
-margin_bottom = 52.0
+margin_bottom = 24.0
 
 [node name="Label" type="Label" parent="HBoxContainer/ValInput/HBoxContainer2"]
 margin_top = 5.0
@@ -45,6 +28,23 @@ text = "Anzahl Inputs:"
 [node name="anzahlInputs" type="LineEdit" parent="HBoxContainer/ValInput/HBoxContainer2"]
 margin_left = 96.0
 margin_right = 154.0
+margin_bottom = 24.0
+caret_blink = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/ValInput"]
+margin_top = 28.0
+margin_right = 229.0
+margin_bottom = 52.0
+
+[node name="Label" type="Label" parent="HBoxContainer/ValInput/HBoxContainer"]
+margin_top = 5.0
+margin_right = 167.0
+margin_bottom = 19.0
+text = "Nummer der Hiddenlayer:"
+
+[node name="anzahlHiddenlayer" type="LineEdit" parent="HBoxContainer/ValInput/HBoxContainer"]
+margin_left = 171.0
+margin_right = 229.0
 margin_bottom = 24.0
 caret_blink = true
 
@@ -974,13 +974,12 @@ rect_min_size = Vector2( 70, 0 )
 size_flags_horizontal = 0
 text = "-"
 
-[connection signal="text_changed" from="HBoxContainer/ValInput/HBoxContainer/anzahlHiddenlayer" to="." method="_on_anzahlHiddenlayer_text_changed"]
 [connection signal="text_changed" from="HBoxContainer/ValInput/HBoxContainer2/anzahlInputs" to="." method="_on_anzahlInputs_text_changed"]
+[connection signal="text_changed" from="HBoxContainer/ValInput/HBoxContainer/anzahlHiddenlayer" to="." method="_on_anzahlHiddenlayer_text_changed"]
 [connection signal="text_changed" from="HBoxContainer/ValInput/VBoxContainer2/neuronenProHiddenlayer" to="." method="_on_neuronenProHiddenlayer_text_changed"]
 [connection signal="text_changed" from="HBoxContainer/ValInput/HBoxContainer3/anzahlOutputs" to="." method="_on_anzahlOutputs_text_changed"]
 [connection signal="text_entered" from="HBoxContainer/ValInput/HBoxContainer3/anzahlOutputs" to="." method="_on_anzahlOutputs_text_entered"]
 [connection signal="text_changed" from="HBoxContainer/ValInput/HBoxContainer4/stepSize" to="." method="_on_stepSize_text_changed"]
-[connection signal="text_entered" from="HBoxContainer/ValInput/HBoxContainer4/stepSize" to="." method="_on_stepSize_text_entered"]
 [connection signal="pressed" from="HBoxContainer/ValInput/run" to="." method="_on_run_pressed"]
 [connection signal="pressed" from="HBoxContainer/VBoxContainer/HBoxContainer5/addOneLine" to="." method="_on_addOneLine_pressed"]
 [connection signal="pressed" from="HBoxContainer/VBoxContainer/HBoxContainer5/deleteOneLine" to="." method="_on_deleteOneLine_pressed"]

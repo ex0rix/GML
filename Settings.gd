@@ -8,10 +8,10 @@ extends Control
 export (NodePath) var architectureDiagrammPath
 var architectureDiagramm : Node
 
-signal run(nLayer, stepSize)
+signal run(nLayer, stepSize, curDataSet)
 
 var anzahlHiddenlayer = 0
-var anzahlInputs = 1
+var anzahlInputs = 2
 var anzahlOutputs = 1
 var neuronenProHiddenlayer = []
 var inputs = []
@@ -29,11 +29,9 @@ func _on_anzahlHiddenlayer_text_changed(new_text):
 	if int(new_text) > 0:
 		if anzahlHiddenlayer > 9:
 			anzahlHiddenlayer = 9
-		$VBoxContainer/VBoxContainer2.visible = true
+		$HBoxContainer/ValInput/VBoxContainer2.visible = true
 	else:
-		$VBoxContainer/VBoxContainer2.visible = false
-
-
+		$HBoxContainer/ValInput/VBoxContainer2.visible = false
 
 
 func _on_anzahlInputs_text_changed(new_text):
@@ -113,9 +111,14 @@ func _on_run_pressed():
 	
 	aProSpalte.append(anzahlOutputs)
 	
-	print(aProSpalte)
 	if (architectureDiagramm != null):
 		architectureDiagramm.changeDiagramm(anzahlHiddenlayer+2, aProSpalte)
+	
+	var dataSet = {
+		"inputs" : [],
+		"outputs" : []
+	}
+	self.emit_signal("run", aProSpalte, stepSize, dataSet)
 
 
 func _on_addOneLine_pressed():
@@ -136,8 +139,4 @@ func _on_deleteOneLine_pressed():
 
 
 func _on_stepSize_text_changed(new_text):
-	var stepSize = int(new_text)
-
-
-func _on_stepSize_text_entered(new_text):
-	pass # Replace with function body.
+	stepSize = float(new_text)

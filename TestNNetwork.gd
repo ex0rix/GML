@@ -12,7 +12,7 @@ var chartFuncs = [Function.new(
 			}
 		)]
 
-var run = true
+var run = false
 
 var trainSetAND = {
 	"inputs" : [[0.0, 0.0], [0.0, 1.0], [1.0, 0.0], [1.0, 1.0]],
@@ -28,6 +28,8 @@ var curDataSet = trainSetXOR
 
 func _ready():
 	neuralNetwork = NeuralNetwork.new([2, 4, 1], 1.8)
+	#$HSplitContainer2/HSplitContainer/Panel/Settings._on_run_pressed()
+	run = true
 	#seed(42069)
 	randomize()
 	neuralNetwork.radomize_weights(1.9)
@@ -48,12 +50,12 @@ func _process(delta):
 			totalError += outputDif
 		totalError = totalError / nTrainingSets
 		
-		if bestOutputDif > totalError:# || iter % 500 == 0:
-			bestOutputDif = totalError
-			##Print debug###
-			print(iter, ": ", bestOutputDif)
-			for i in nTrainingSets:
-				print(curDataSet["inputs"][i], " => ",neuralNetwork.calc(curDataSet["inputs"][i]))
+#		if bestOutputDif > totalError:# || iter % 500 == 0:
+#			bestOutputDif = totalError
+#			##Print debug###
+#			print(iter, ": ", bestOutputDif)
+#			for i in nTrainingSets:
+#				print(curDataSet["inputs"][i], " => ",neuralNetwork.calc(curDataSet["inputs"][i]))
 		if iter != 0:
 			chartFuncs[0].add_point(iter, totalError)
 		
@@ -64,9 +66,6 @@ func _process(delta):
 		var outputs = neuralNetwork.calc(curDataSet["inputs"][i])
 		var trainDif = curDataSet["outputs"][i][0] - outputs[0]
 		neuralNetwork.backProp(trainSetXOR["inputs"][i] , [trainDif])
-	
-	if iter % 1000 == 0:
-		neuralNetwork.netDebug()
 	
 	##Saves performance
 	if iter % 10 == 0:
@@ -97,3 +96,12 @@ func initContext():
 
 func _on_HSplitContainer2_dragged(offset):
 	$HSplitContainer2/ScrollContainer/ArchitectureDiagramm.get_child(0).update()
+
+
+func _on_Settings_run(nLayer, stepSize, newDataSet):
+	curDataSet = newDataSet
+	print(nLayer, stepSize)
+	run = true
+	neuralNetwork = NeuralNetwork.new(nLayer, stepSize)
+	neuralNetwork.radomize_weights(1.9)
+	iter = 0
