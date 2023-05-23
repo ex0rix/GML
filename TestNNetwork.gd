@@ -4,7 +4,7 @@ onready var chart: Chart = $HSplitContainer2/HSplitContainer/Container/Chart
 var neuralNetwork : NeuralNetwork
 
 var chartFuncs = [Function.new(
-			[-1, 0], [1, 1], "And",
+			[-1, 0], [0.5, 0.5], "And",
 			{
 				color = Color(0.992188, 0, 1),
 				marker = Function.Marker.NONE,
@@ -27,9 +27,9 @@ var trainSetXOR = {
 var curDataSet = trainSetXOR
 
 func _ready():
-	neuralNetwork = NeuralNetwork.new([2, 8, 1], -0.3)
-	seed(42069)
-	#randomize()
+	neuralNetwork = NeuralNetwork.new([2, 4, 1], 1.8)
+	#seed(42069)
+	randomize()
 	neuralNetwork.radomize_weights(1.9)
 	
 	chart.plot(chartFuncs, initContext())
@@ -54,13 +54,16 @@ func _process(delta):
 			print(iter, ": ", bestOutputDif)
 			for i in nTrainingSets:
 				print(curDataSet["inputs"][i], " => ",neuralNetwork.calc(curDataSet["inputs"][i]))
-		chartFuncs[0].add_point(iter, totalError)
+		if iter != 0:
+			chartFuncs[0].add_point(iter, totalError)
 		
-		neuralNetwork.radomize_weights(-1.1)
+		#neuralNetwork.radomize_weights(-1.1)
 		
 		##Only ONE output at moment TODO array lenght
 		var i = randi() % 4
-		#neuralNetwork.backProp(trainSetXOR["inputs"][i] , [totalError])
+		var outputs = neuralNetwork.calc(curDataSet["inputs"][i])
+		var trainDif = curDataSet["outputs"][i][0] - outputs[0]
+		neuralNetwork.backProp(trainSetXOR["inputs"][i] , [trainDif])
 	
 	if iter % 1000 == 0:
 		neuralNetwork.netDebug()
@@ -83,11 +86,11 @@ func initContext():
 	cp.colors.ticks = Color("#283442")
 	cp.colors.text = Color.whitesmoke
 	cp.draw_bounding_box = true
-	cp.y_tick_size = 0.0001
+	cp.y_tick_size = 1
 	cp.title = "ML AI fitness over time"
 	cp.x_label = "Iterration"
 	cp.y_label = "Fitness"
-	cp.x_scale = 10
+	cp.x_scale = 2
 	cp.y_scale = 2
 	cp.interactive = true # false by default, it allows the chart to create a tooltip to show point values
 	return cp

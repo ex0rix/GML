@@ -8,111 +8,142 @@ anchor_bottom = 0.692
 script = ExtResource( 1 )
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
-margin_right = 228.0
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="ValInput" type="VBoxContainer" parent="HBoxContainer"]
+margin_right = 229.0
+margin_bottom = 168.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/ValInput"]
+margin_right = 229.0
 margin_bottom = 24.0
 
-[node name="Label" type="Label" parent="HBoxContainer"]
+[node name="Label" type="Label" parent="HBoxContainer/ValInput/HBoxContainer"]
 margin_top = 5.0
 margin_right = 167.0
 margin_bottom = 19.0
 text = "Nummer der Hiddenlayer:"
 
-[node name="anzahlHiddenlayer" type="LineEdit" parent="HBoxContainer"]
+[node name="anzahlHiddenlayer" type="LineEdit" parent="HBoxContainer/ValInput/HBoxContainer"]
 margin_left = 171.0
 margin_right = 229.0
 margin_bottom = 24.0
 caret_blink = true
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
-anchor_right = 0.184
-anchor_bottom = 0.192
-margin_top = 26.0
-margin_right = 56.0
-margin_bottom = -27.0
+[node name="HBoxContainer2" type="HBoxContainer" parent="HBoxContainer/ValInput"]
+margin_top = 28.0
+margin_right = 229.0
+margin_bottom = 52.0
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer"]
-margin_right = 165.0
-margin_bottom = 24.0
-
-[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer2"]
+[node name="Label" type="Label" parent="HBoxContainer/ValInput/HBoxContainer2"]
 margin_top = 5.0
 margin_right = 92.0
 margin_bottom = 19.0
 text = "Anzahl Inputs:"
 
-[node name="anzahlInputs" type="LineEdit" parent="VBoxContainer/HBoxContainer2"]
+[node name="anzahlInputs" type="LineEdit" parent="HBoxContainer/ValInput/HBoxContainer2"]
 margin_left = 96.0
 margin_right = 154.0
 margin_bottom = 24.0
 caret_blink = true
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="VBoxContainer"]
+[node name="VBoxContainer2" type="VBoxContainer" parent="HBoxContainer/ValInput"]
 visible = false
-margin_top = 28.0
+margin_top = 26.0
 margin_right = 313.0
-margin_bottom = 70.0
+margin_bottom = 68.0
 
-[node name="Label" type="Label" parent="VBoxContainer/VBoxContainer2"]
+[node name="Label" type="Label" parent="HBoxContainer/ValInput/VBoxContainer2"]
 margin_right = 313.0
 margin_bottom = 14.0
 text = "Anzahl der Hidderlayer Neuronen (mit , trennen):"
 
-[node name="neuronenProHiddenlayer" type="LineEdit" parent="VBoxContainer/VBoxContainer2"]
+[node name="neuronenProHiddenlayer" type="LineEdit" parent="HBoxContainer/ValInput/VBoxContainer2"]
 margin_top = 18.0
 margin_right = 313.0
 margin_bottom = 42.0
 caret_blink = true
 
-[node name="HBoxContainer3" type="HBoxContainer" parent="VBoxContainer"]
-margin_top = 28.0
-margin_right = 165.0
-margin_bottom = 52.0
+[node name="HBoxContainer3" type="HBoxContainer" parent="HBoxContainer/ValInput"]
+margin_top = 56.0
+margin_right = 229.0
+margin_bottom = 80.0
 
-[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer3"]
+[node name="Label" type="Label" parent="HBoxContainer/ValInput/HBoxContainer3"]
 margin_top = 5.0
 margin_right = 103.0
 margin_bottom = 19.0
 text = "Anzahl Outputs:"
 
-[node name="anzahlOutputs" type="LineEdit" parent="VBoxContainer/HBoxContainer3"]
+[node name="anzahlOutputs" type="LineEdit" parent="HBoxContainer/ValInput/HBoxContainer3"]
 margin_left = 107.0
 margin_right = 165.0
 margin_bottom = 24.0
 caret_blink = true
 
-[node name="HBoxContainer4" type="HBoxContainer" parent="VBoxContainer"]
-margin_top = 56.0
-margin_right = 165.0
-margin_bottom = 200.0
+[node name="HBoxContainer4" type="HBoxContainer" parent="HBoxContainer/ValInput"]
+margin_top = 84.0
+margin_right = 229.0
+margin_bottom = 108.0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer4"]
+[node name="Label" type="Label" parent="HBoxContainer/ValInput/HBoxContainer4"]
+margin_top = 5.0
+margin_right = 68.0
+margin_bottom = 19.0
+text = "Lern Rate: "
+
+[node name="stepSize" type="LineEdit" parent="HBoxContainer/ValInput/HBoxContainer4"]
+margin_left = 72.0
+margin_right = 130.0
+margin_bottom = 24.0
+caret_blink = true
+
+[node name="run" type="Button" parent="HBoxContainer/ValInput"]
+margin_top = 112.0
+margin_right = 229.0
+margin_bottom = 132.0
+size_flags_horizontal = 3
+size_flags_vertical = 0
+text = "run"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
+margin_left = 233.0
+margin_right = 377.0
+margin_bottom = 168.0
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="HBoxContainer/VBoxContainer"]
+margin_right = 144.0
+margin_bottom = 144.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/VBoxContainer/HBoxContainer4"]
 margin_right = 45.0
 margin_bottom = 144.0
 
-[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer4/VBoxContainer"]
+[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer/HBoxContainer4/VBoxContainer"]
 margin_right = 45.0
 margin_bottom = 14.0
 text = "Inputs:"
 
-[node name="Inputs" type="HBoxContainer" parent="VBoxContainer/HBoxContainer4/VBoxContainer"]
+[node name="Inputs" type="HBoxContainer" parent="HBoxContainer/VBoxContainer/HBoxContainer4/VBoxContainer"]
 margin_top = 18.0
 margin_right = 45.0
 margin_bottom = 144.0
 alignment = 1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer4/VBoxContainer/Inputs"]
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/VBoxContainer/HBoxContainer4/VBoxContainer/Inputs"]
 margin_left = 2.0
 margin_right = 20.0
 margin_bottom = 126.0
 
-[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer4/VBoxContainer/Inputs/VBoxContainer"]
+[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer/HBoxContainer4/VBoxContainer/Inputs/VBoxContainer"]
 margin_right = 18.0
 margin_bottom = 14.0
 rect_min_size = Vector2( 2, 2 )
 text = "1"
 align = 1
 
-[node name="LineEdit" type="LineEdit" parent="VBoxContainer/HBoxContainer4/VBoxContainer/Inputs/VBoxContainer"]
+[node name="LineEdit" type="LineEdit" parent="HBoxContainer/VBoxContainer/HBoxContainer4/VBoxContainer/Inputs/VBoxContainer"]
 margin_top = 18.0
 margin_right = 18.0
 margin_bottom = 42.0
@@ -120,7 +151,7 @@ rect_min_size = Vector2( 2, 2 )
 custom_constants/minimum_spaces = 1
 expand_to_text_length = true
 
-[node name="LineEdit2" type="LineEdit" parent="VBoxContainer/HBoxContainer4/VBoxContainer/Inputs/VBoxContainer"]
+[node name="LineEdit2" type="LineEdit" parent="HBoxContainer/VBoxContainer/HBoxContainer4/VBoxContainer/Inputs/VBoxContainer"]
 margin_top = 46.0
 margin_right = 18.0
 margin_bottom = 70.0
@@ -128,7 +159,7 @@ rect_min_size = Vector2( 2, 2 )
 custom_constants/minimum_spaces = 2
 expand_to_text_length = true
 
-[node name="LineEdit3" type="LineEdit" parent="VBoxContainer/HBoxContainer4/VBoxContainer/Inputs/VBoxContainer"]
+[node name="LineEdit3" type="LineEdit" parent="HBoxContainer/VBoxContainer/HBoxContainer4/VBoxContainer/Inputs/VBoxContainer"]
 margin_top = 74.0
 margin_right = 18.0
 margin_bottom = 98.0
@@ -136,7 +167,7 @@ rect_min_size = Vector2( 2, 2 )
 custom_constants/minimum_spaces = 2
 expand_to_text_length = true
 
-[node name="LineEdit4" type="LineEdit" parent="VBoxContainer/HBoxContainer4/VBoxContainer/Inputs/VBoxContainer"]
+[node name="LineEdit4" type="LineEdit" parent="HBoxContainer/VBoxContainer/HBoxContainer4/VBoxContainer/Inputs/VBoxContainer"]
 margin_top = 102.0
 margin_right = 18.0
 margin_bottom = 126.0
@@ -144,19 +175,19 @@ rect_min_size = Vector2( 2, 2 )
 custom_constants/minimum_spaces = 2
 expand_to_text_length = true
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="VBoxContainer/HBoxContainer4/VBoxContainer/Inputs"]
+[node name="VBoxContainer2" type="VBoxContainer" parent="HBoxContainer/VBoxContainer/HBoxContainer4/VBoxContainer/Inputs"]
 margin_left = 24.0
 margin_right = 42.0
 margin_bottom = 126.0
 
-[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer4/VBoxContainer/Inputs/VBoxContainer2"]
+[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer/HBoxContainer4/VBoxContainer/Inputs/VBoxContainer2"]
 margin_right = 18.0
 margin_bottom = 14.0
 rect_min_size = Vector2( 2, 2 )
 text = "2"
 align = 1
 
-[node name="LineEdit" type="LineEdit" parent="VBoxContainer/HBoxContainer4/VBoxContainer/Inputs/VBoxContainer2"]
+[node name="LineEdit" type="LineEdit" parent="HBoxContainer/VBoxContainer/HBoxContainer4/VBoxContainer/Inputs/VBoxContainer2"]
 margin_top = 18.0
 margin_right = 18.0
 margin_bottom = 42.0
@@ -164,7 +195,7 @@ rect_min_size = Vector2( 2, 2 )
 custom_constants/minimum_spaces = 1
 expand_to_text_length = true
 
-[node name="LineEdit2" type="LineEdit" parent="VBoxContainer/HBoxContainer4/VBoxContainer/Inputs/VBoxContainer2"]
+[node name="LineEdit2" type="LineEdit" parent="HBoxContainer/VBoxContainer/HBoxContainer4/VBoxContainer/Inputs/VBoxContainer2"]
 margin_top = 46.0
 margin_right = 18.0
 margin_bottom = 70.0
@@ -172,7 +203,7 @@ rect_min_size = Vector2( 2, 2 )
 custom_constants/minimum_spaces = 2
 expand_to_text_length = true
 
-[node name="LineEdit3" type="LineEdit" parent="VBoxContainer/HBoxContainer4/VBoxContainer/Inputs/VBoxContainer2"]
+[node name="LineEdit3" type="LineEdit" parent="HBoxContainer/VBoxContainer/HBoxContainer4/VBoxContainer/Inputs/VBoxContainer2"]
 margin_top = 74.0
 margin_right = 18.0
 margin_bottom = 98.0
@@ -180,7 +211,7 @@ rect_min_size = Vector2( 2, 2 )
 custom_constants/minimum_spaces = 2
 expand_to_text_length = true
 
-[node name="LineEdit4" type="LineEdit" parent="VBoxContainer/HBoxContainer4/VBoxContainer/Inputs/VBoxContainer2"]
+[node name="LineEdit4" type="LineEdit" parent="HBoxContainer/VBoxContainer/HBoxContainer4/VBoxContainer/Inputs/VBoxContainer2"]
 margin_top = 102.0
 margin_right = 18.0
 margin_bottom = 126.0
@@ -188,20 +219,20 @@ rect_min_size = Vector2( 2, 2 )
 custom_constants/minimum_spaces = 2
 expand_to_text_length = true
 
-[node name="VBoxContainer3" type="VBoxContainer" parent="VBoxContainer/HBoxContainer4/VBoxContainer/Inputs"]
+[node name="VBoxContainer3" type="VBoxContainer" parent="HBoxContainer/VBoxContainer/HBoxContainer4/VBoxContainer/Inputs"]
 visible = false
 margin_left = 44.0
 margin_right = 62.0
 margin_bottom = 126.0
 
-[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer4/VBoxContainer/Inputs/VBoxContainer3"]
+[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer/HBoxContainer4/VBoxContainer/Inputs/VBoxContainer3"]
 margin_right = 18.0
 margin_bottom = 14.0
 rect_min_size = Vector2( 2, 2 )
 text = "3"
 align = 1
 
-[node name="LineEdit" type="LineEdit" parent="VBoxContainer/HBoxContainer4/VBoxContainer/Inputs/VBoxContainer3"]
+[node name="LineEdit" type="LineEdit" parent="HBoxContainer/VBoxContainer/HBoxContainer4/VBoxContainer/Inputs/VBoxContainer3"]
 margin_top = 18.0
 margin_right = 18.0
 margin_bottom = 42.0
@@ -209,7 +240,7 @@ rect_min_size = Vector2( 2, 2 )
 custom_constants/minimum_spaces = 1
 expand_to_text_length = true
 
-[node name="LineEdit2" type="LineEdit" parent="VBoxContainer/HBoxContainer4/VBoxContainer/Inputs/VBoxContainer3"]
+[node name="LineEdit2" type="LineEdit" parent="HBoxContainer/VBoxContainer/HBoxContainer4/VBoxContainer/Inputs/VBoxContainer3"]
 margin_top = 46.0
 margin_right = 18.0
 margin_bottom = 70.0
@@ -217,7 +248,7 @@ rect_min_size = Vector2( 2, 2 )
 custom_constants/minimum_spaces = 2
 expand_to_text_length = true
 
-[node name="LineEdit3" type="LineEdit" parent="VBoxContainer/HBoxContainer4/VBoxContainer/Inputs/VBoxContainer3"]
+[node name="LineEdit3" type="LineEdit" parent="HBoxContainer/VBoxContainer/HBoxContainer4/VBoxContainer/Inputs/VBoxContainer3"]
 margin_top = 74.0
 margin_right = 18.0
 margin_bottom = 98.0
@@ -225,7 +256,7 @@ rect_min_size = Vector2( 2, 2 )
 custom_constants/minimum_spaces = 2
 expand_to_text_length = true
 
-[node name="LineEdit4" type="LineEdit" parent="VBoxContainer/HBoxContainer4/VBoxContainer/Inputs/VBoxContainer3"]
+[node name="LineEdit4" type="LineEdit" parent="HBoxContainer/VBoxContainer/HBoxContainer4/VBoxContainer/Inputs/VBoxContainer3"]
 margin_top = 102.0
 margin_right = 18.0
 margin_bottom = 126.0
@@ -233,20 +264,20 @@ rect_min_size = Vector2( 2, 2 )
 custom_constants/minimum_spaces = 2
 expand_to_text_length = true
 
-[node name="VBoxContainer4" type="VBoxContainer" parent="VBoxContainer/HBoxContainer4/VBoxContainer/Inputs"]
+[node name="VBoxContainer4" type="VBoxContainer" parent="HBoxContainer/VBoxContainer/HBoxContainer4/VBoxContainer/Inputs"]
 visible = false
 margin_left = 66.0
 margin_right = 84.0
 margin_bottom = 126.0
 
-[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer4/VBoxContainer/Inputs/VBoxContainer4"]
+[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer/HBoxContainer4/VBoxContainer/Inputs/VBoxContainer4"]
 margin_right = 18.0
 margin_bottom = 14.0
 rect_min_size = Vector2( 2, 2 )
 text = "4"
 align = 1
 
-[node name="LineEdit" type="LineEdit" parent="VBoxContainer/HBoxContainer4/VBoxContainer/Inputs/VBoxContainer4"]
+[node name="LineEdit" type="LineEdit" parent="HBoxContainer/VBoxContainer/HBoxContainer4/VBoxContainer/Inputs/VBoxContainer4"]
 margin_top = 18.0
 margin_right = 18.0
 margin_bottom = 42.0
@@ -254,7 +285,7 @@ rect_min_size = Vector2( 2, 2 )
 custom_constants/minimum_spaces = 1
 expand_to_text_length = true
 
-[node name="LineEdit2" type="LineEdit" parent="VBoxContainer/HBoxContainer4/VBoxContainer/Inputs/VBoxContainer4"]
+[node name="LineEdit2" type="LineEdit" parent="HBoxContainer/VBoxContainer/HBoxContainer4/VBoxContainer/Inputs/VBoxContainer4"]
 margin_top = 46.0
 margin_right = 18.0
 margin_bottom = 70.0
@@ -262,7 +293,7 @@ rect_min_size = Vector2( 2, 2 )
 custom_constants/minimum_spaces = 2
 expand_to_text_length = true
 
-[node name="LineEdit3" type="LineEdit" parent="VBoxContainer/HBoxContainer4/VBoxContainer/Inputs/VBoxContainer4"]
+[node name="LineEdit3" type="LineEdit" parent="HBoxContainer/VBoxContainer/HBoxContainer4/VBoxContainer/Inputs/VBoxContainer4"]
 margin_top = 74.0
 margin_right = 18.0
 margin_bottom = 98.0
@@ -270,7 +301,7 @@ rect_min_size = Vector2( 2, 2 )
 custom_constants/minimum_spaces = 2
 expand_to_text_length = true
 
-[node name="LineEdit4" type="LineEdit" parent="VBoxContainer/HBoxContainer4/VBoxContainer/Inputs/VBoxContainer4"]
+[node name="LineEdit4" type="LineEdit" parent="HBoxContainer/VBoxContainer/HBoxContainer4/VBoxContainer/Inputs/VBoxContainer4"]
 margin_top = 102.0
 margin_right = 18.0
 margin_bottom = 126.0
@@ -278,20 +309,20 @@ rect_min_size = Vector2( 2, 2 )
 custom_constants/minimum_spaces = 2
 expand_to_text_length = true
 
-[node name="VBoxContainer5" type="VBoxContainer" parent="VBoxContainer/HBoxContainer4/VBoxContainer/Inputs"]
+[node name="VBoxContainer5" type="VBoxContainer" parent="HBoxContainer/VBoxContainer/HBoxContainer4/VBoxContainer/Inputs"]
 visible = false
 margin_left = 66.0
 margin_right = 84.0
 margin_bottom = 126.0
 
-[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer4/VBoxContainer/Inputs/VBoxContainer5"]
+[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer/HBoxContainer4/VBoxContainer/Inputs/VBoxContainer5"]
 margin_right = 18.0
 margin_bottom = 14.0
 rect_min_size = Vector2( 2, 2 )
 text = "5"
 align = 1
 
-[node name="LineEdit" type="LineEdit" parent="VBoxContainer/HBoxContainer4/VBoxContainer/Inputs/VBoxContainer5"]
+[node name="LineEdit" type="LineEdit" parent="HBoxContainer/VBoxContainer/HBoxContainer4/VBoxContainer/Inputs/VBoxContainer5"]
 margin_top = 18.0
 margin_right = 18.0
 margin_bottom = 42.0
@@ -299,7 +330,7 @@ rect_min_size = Vector2( 2, 2 )
 custom_constants/minimum_spaces = 1
 expand_to_text_length = true
 
-[node name="LineEdit2" type="LineEdit" parent="VBoxContainer/HBoxContainer4/VBoxContainer/Inputs/VBoxContainer5"]
+[node name="LineEdit2" type="LineEdit" parent="HBoxContainer/VBoxContainer/HBoxContainer4/VBoxContainer/Inputs/VBoxContainer5"]
 margin_top = 46.0
 margin_right = 18.0
 margin_bottom = 70.0
@@ -307,7 +338,7 @@ rect_min_size = Vector2( 2, 2 )
 custom_constants/minimum_spaces = 2
 expand_to_text_length = true
 
-[node name="LineEdit3" type="LineEdit" parent="VBoxContainer/HBoxContainer4/VBoxContainer/Inputs/VBoxContainer5"]
+[node name="LineEdit3" type="LineEdit" parent="HBoxContainer/VBoxContainer/HBoxContainer4/VBoxContainer/Inputs/VBoxContainer5"]
 margin_top = 74.0
 margin_right = 18.0
 margin_bottom = 98.0
@@ -315,7 +346,7 @@ rect_min_size = Vector2( 2, 2 )
 custom_constants/minimum_spaces = 2
 expand_to_text_length = true
 
-[node name="LineEdit4" type="LineEdit" parent="VBoxContainer/HBoxContainer4/VBoxContainer/Inputs/VBoxContainer5"]
+[node name="LineEdit4" type="LineEdit" parent="HBoxContainer/VBoxContainer/HBoxContainer4/VBoxContainer/Inputs/VBoxContainer5"]
 margin_top = 102.0
 margin_right = 18.0
 margin_bottom = 126.0
@@ -323,20 +354,20 @@ rect_min_size = Vector2( 2, 2 )
 custom_constants/minimum_spaces = 2
 expand_to_text_length = true
 
-[node name="VBoxContainer6" type="VBoxContainer" parent="VBoxContainer/HBoxContainer4/VBoxContainer/Inputs"]
+[node name="VBoxContainer6" type="VBoxContainer" parent="HBoxContainer/VBoxContainer/HBoxContainer4/VBoxContainer/Inputs"]
 visible = false
 margin_left = 66.0
 margin_right = 84.0
 margin_bottom = 126.0
 
-[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer4/VBoxContainer/Inputs/VBoxContainer6"]
+[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer/HBoxContainer4/VBoxContainer/Inputs/VBoxContainer6"]
 margin_right = 18.0
 margin_bottom = 14.0
 rect_min_size = Vector2( 2, 2 )
 text = "6"
 align = 1
 
-[node name="LineEdit" type="LineEdit" parent="VBoxContainer/HBoxContainer4/VBoxContainer/Inputs/VBoxContainer6"]
+[node name="LineEdit" type="LineEdit" parent="HBoxContainer/VBoxContainer/HBoxContainer4/VBoxContainer/Inputs/VBoxContainer6"]
 margin_top = 18.0
 margin_right = 18.0
 margin_bottom = 42.0
@@ -344,7 +375,7 @@ rect_min_size = Vector2( 2, 2 )
 custom_constants/minimum_spaces = 1
 expand_to_text_length = true
 
-[node name="LineEdit2" type="LineEdit" parent="VBoxContainer/HBoxContainer4/VBoxContainer/Inputs/VBoxContainer6"]
+[node name="LineEdit2" type="LineEdit" parent="HBoxContainer/VBoxContainer/HBoxContainer4/VBoxContainer/Inputs/VBoxContainer6"]
 margin_top = 46.0
 margin_right = 18.0
 margin_bottom = 70.0
@@ -352,7 +383,7 @@ rect_min_size = Vector2( 2, 2 )
 custom_constants/minimum_spaces = 2
 expand_to_text_length = true
 
-[node name="LineEdit3" type="LineEdit" parent="VBoxContainer/HBoxContainer4/VBoxContainer/Inputs/VBoxContainer6"]
+[node name="LineEdit3" type="LineEdit" parent="HBoxContainer/VBoxContainer/HBoxContainer4/VBoxContainer/Inputs/VBoxContainer6"]
 margin_top = 74.0
 margin_right = 18.0
 margin_bottom = 98.0
@@ -360,7 +391,7 @@ rect_min_size = Vector2( 2, 2 )
 custom_constants/minimum_spaces = 2
 expand_to_text_length = true
 
-[node name="LineEdit4" type="LineEdit" parent="VBoxContainer/HBoxContainer4/VBoxContainer/Inputs/VBoxContainer6"]
+[node name="LineEdit4" type="LineEdit" parent="HBoxContainer/VBoxContainer/HBoxContainer4/VBoxContainer/Inputs/VBoxContainer6"]
 margin_top = 102.0
 margin_right = 18.0
 margin_bottom = 126.0
@@ -368,20 +399,20 @@ rect_min_size = Vector2( 2, 2 )
 custom_constants/minimum_spaces = 2
 expand_to_text_length = true
 
-[node name="VBoxContainer7" type="VBoxContainer" parent="VBoxContainer/HBoxContainer4/VBoxContainer/Inputs"]
+[node name="VBoxContainer7" type="VBoxContainer" parent="HBoxContainer/VBoxContainer/HBoxContainer4/VBoxContainer/Inputs"]
 visible = false
 margin_left = 66.0
 margin_right = 84.0
 margin_bottom = 126.0
 
-[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer4/VBoxContainer/Inputs/VBoxContainer7"]
+[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer/HBoxContainer4/VBoxContainer/Inputs/VBoxContainer7"]
 margin_right = 18.0
 margin_bottom = 14.0
 rect_min_size = Vector2( 2, 2 )
 text = "7"
 align = 1
 
-[node name="LineEdit" type="LineEdit" parent="VBoxContainer/HBoxContainer4/VBoxContainer/Inputs/VBoxContainer7"]
+[node name="LineEdit" type="LineEdit" parent="HBoxContainer/VBoxContainer/HBoxContainer4/VBoxContainer/Inputs/VBoxContainer7"]
 margin_top = 18.0
 margin_right = 18.0
 margin_bottom = 42.0
@@ -389,7 +420,7 @@ rect_min_size = Vector2( 2, 2 )
 custom_constants/minimum_spaces = 1
 expand_to_text_length = true
 
-[node name="LineEdit2" type="LineEdit" parent="VBoxContainer/HBoxContainer4/VBoxContainer/Inputs/VBoxContainer7"]
+[node name="LineEdit2" type="LineEdit" parent="HBoxContainer/VBoxContainer/HBoxContainer4/VBoxContainer/Inputs/VBoxContainer7"]
 margin_top = 46.0
 margin_right = 18.0
 margin_bottom = 70.0
@@ -397,7 +428,7 @@ rect_min_size = Vector2( 2, 2 )
 custom_constants/minimum_spaces = 2
 expand_to_text_length = true
 
-[node name="LineEdit3" type="LineEdit" parent="VBoxContainer/HBoxContainer4/VBoxContainer/Inputs/VBoxContainer7"]
+[node name="LineEdit3" type="LineEdit" parent="HBoxContainer/VBoxContainer/HBoxContainer4/VBoxContainer/Inputs/VBoxContainer7"]
 margin_top = 74.0
 margin_right = 18.0
 margin_bottom = 98.0
@@ -405,7 +436,7 @@ rect_min_size = Vector2( 2, 2 )
 custom_constants/minimum_spaces = 2
 expand_to_text_length = true
 
-[node name="LineEdit4" type="LineEdit" parent="VBoxContainer/HBoxContainer4/VBoxContainer/Inputs/VBoxContainer7"]
+[node name="LineEdit4" type="LineEdit" parent="HBoxContainer/VBoxContainer/HBoxContainer4/VBoxContainer/Inputs/VBoxContainer7"]
 margin_top = 102.0
 margin_right = 18.0
 margin_bottom = 126.0
@@ -413,20 +444,20 @@ rect_min_size = Vector2( 2, 2 )
 custom_constants/minimum_spaces = 2
 expand_to_text_length = true
 
-[node name="VBoxContainer8" type="VBoxContainer" parent="VBoxContainer/HBoxContainer4/VBoxContainer/Inputs"]
+[node name="VBoxContainer8" type="VBoxContainer" parent="HBoxContainer/VBoxContainer/HBoxContainer4/VBoxContainer/Inputs"]
 visible = false
 margin_left = 66.0
 margin_right = 84.0
 margin_bottom = 126.0
 
-[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer4/VBoxContainer/Inputs/VBoxContainer8"]
+[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer/HBoxContainer4/VBoxContainer/Inputs/VBoxContainer8"]
 margin_right = 18.0
 margin_bottom = 14.0
 rect_min_size = Vector2( 2, 2 )
 text = "8"
 align = 1
 
-[node name="LineEdit" type="LineEdit" parent="VBoxContainer/HBoxContainer4/VBoxContainer/Inputs/VBoxContainer8"]
+[node name="LineEdit" type="LineEdit" parent="HBoxContainer/VBoxContainer/HBoxContainer4/VBoxContainer/Inputs/VBoxContainer8"]
 margin_top = 18.0
 margin_right = 18.0
 margin_bottom = 42.0
@@ -434,7 +465,7 @@ rect_min_size = Vector2( 2, 2 )
 custom_constants/minimum_spaces = 1
 expand_to_text_length = true
 
-[node name="LineEdit2" type="LineEdit" parent="VBoxContainer/HBoxContainer4/VBoxContainer/Inputs/VBoxContainer8"]
+[node name="LineEdit2" type="LineEdit" parent="HBoxContainer/VBoxContainer/HBoxContainer4/VBoxContainer/Inputs/VBoxContainer8"]
 margin_top = 46.0
 margin_right = 18.0
 margin_bottom = 70.0
@@ -442,7 +473,7 @@ rect_min_size = Vector2( 2, 2 )
 custom_constants/minimum_spaces = 2
 expand_to_text_length = true
 
-[node name="LineEdit3" type="LineEdit" parent="VBoxContainer/HBoxContainer4/VBoxContainer/Inputs/VBoxContainer8"]
+[node name="LineEdit3" type="LineEdit" parent="HBoxContainer/VBoxContainer/HBoxContainer4/VBoxContainer/Inputs/VBoxContainer8"]
 margin_top = 74.0
 margin_right = 18.0
 margin_bottom = 98.0
@@ -450,7 +481,7 @@ rect_min_size = Vector2( 2, 2 )
 custom_constants/minimum_spaces = 2
 expand_to_text_length = true
 
-[node name="LineEdit4" type="LineEdit" parent="VBoxContainer/HBoxContainer4/VBoxContainer/Inputs/VBoxContainer8"]
+[node name="LineEdit4" type="LineEdit" parent="HBoxContainer/VBoxContainer/HBoxContainer4/VBoxContainer/Inputs/VBoxContainer8"]
 margin_top = 102.0
 margin_right = 18.0
 margin_bottom = 126.0
@@ -458,20 +489,20 @@ rect_min_size = Vector2( 2, 2 )
 custom_constants/minimum_spaces = 2
 expand_to_text_length = true
 
-[node name="VBoxContainer9" type="VBoxContainer" parent="VBoxContainer/HBoxContainer4/VBoxContainer/Inputs"]
+[node name="VBoxContainer9" type="VBoxContainer" parent="HBoxContainer/VBoxContainer/HBoxContainer4/VBoxContainer/Inputs"]
 visible = false
 margin_left = 22.0
 margin_right = 40.0
 margin_bottom = 126.0
 
-[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer4/VBoxContainer/Inputs/VBoxContainer9"]
+[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer/HBoxContainer4/VBoxContainer/Inputs/VBoxContainer9"]
 margin_right = 18.0
 margin_bottom = 14.0
 rect_min_size = Vector2( 2, 2 )
 text = "9"
 align = 1
 
-[node name="LineEdit" type="LineEdit" parent="VBoxContainer/HBoxContainer4/VBoxContainer/Inputs/VBoxContainer9"]
+[node name="LineEdit" type="LineEdit" parent="HBoxContainer/VBoxContainer/HBoxContainer4/VBoxContainer/Inputs/VBoxContainer9"]
 margin_top = 18.0
 margin_right = 18.0
 margin_bottom = 42.0
@@ -479,7 +510,7 @@ rect_min_size = Vector2( 2, 2 )
 custom_constants/minimum_spaces = 1
 expand_to_text_length = true
 
-[node name="LineEdit2" type="LineEdit" parent="VBoxContainer/HBoxContainer4/VBoxContainer/Inputs/VBoxContainer9"]
+[node name="LineEdit2" type="LineEdit" parent="HBoxContainer/VBoxContainer/HBoxContainer4/VBoxContainer/Inputs/VBoxContainer9"]
 margin_top = 46.0
 margin_right = 18.0
 margin_bottom = 70.0
@@ -487,7 +518,7 @@ rect_min_size = Vector2( 2, 2 )
 custom_constants/minimum_spaces = 2
 expand_to_text_length = true
 
-[node name="LineEdit3" type="LineEdit" parent="VBoxContainer/HBoxContainer4/VBoxContainer/Inputs/VBoxContainer9"]
+[node name="LineEdit3" type="LineEdit" parent="HBoxContainer/VBoxContainer/HBoxContainer4/VBoxContainer/Inputs/VBoxContainer9"]
 margin_top = 74.0
 margin_right = 18.0
 margin_bottom = 98.0
@@ -495,7 +526,7 @@ rect_min_size = Vector2( 2, 2 )
 custom_constants/minimum_spaces = 2
 expand_to_text_length = true
 
-[node name="LineEdit4" type="LineEdit" parent="VBoxContainer/HBoxContainer4/VBoxContainer/Inputs/VBoxContainer9"]
+[node name="LineEdit4" type="LineEdit" parent="HBoxContainer/VBoxContainer/HBoxContainer4/VBoxContainer/Inputs/VBoxContainer9"]
 margin_top = 102.0
 margin_right = 18.0
 margin_bottom = 126.0
@@ -503,35 +534,35 @@ rect_min_size = Vector2( 2, 2 )
 custom_constants/minimum_spaces = 2
 expand_to_text_length = true
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="VBoxContainer/HBoxContainer4"]
+[node name="VBoxContainer2" type="VBoxContainer" parent="HBoxContainer/VBoxContainer/HBoxContainer4"]
 margin_left = 49.0
 margin_right = 105.0
 margin_bottom = 144.0
 
-[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer4/VBoxContainer2"]
+[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer/HBoxContainer4/VBoxContainer2"]
 margin_right = 56.0
 margin_bottom = 14.0
 text = "Outputs:"
 
-[node name="outputs" type="HBoxContainer" parent="VBoxContainer/HBoxContainer4/VBoxContainer2"]
+[node name="outputs" type="HBoxContainer" parent="HBoxContainer/VBoxContainer/HBoxContainer4/VBoxContainer2"]
 margin_top = 18.0
 margin_right = 56.0
 margin_bottom = 144.0
 alignment = 1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer4/VBoxContainer2/outputs"]
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/VBoxContainer/HBoxContainer4/VBoxContainer2/outputs"]
 margin_left = 19.0
 margin_right = 37.0
 margin_bottom = 126.0
 
-[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer4/VBoxContainer2/outputs/VBoxContainer"]
+[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer/HBoxContainer4/VBoxContainer2/outputs/VBoxContainer"]
 margin_right = 18.0
 margin_bottom = 14.0
 rect_min_size = Vector2( 2, 2 )
 text = "1"
 align = 1
 
-[node name="LineEdit" type="LineEdit" parent="VBoxContainer/HBoxContainer4/VBoxContainer2/outputs/VBoxContainer"]
+[node name="LineEdit" type="LineEdit" parent="HBoxContainer/VBoxContainer/HBoxContainer4/VBoxContainer2/outputs/VBoxContainer"]
 margin_top = 18.0
 margin_right = 18.0
 margin_bottom = 42.0
@@ -539,7 +570,7 @@ rect_min_size = Vector2( 2, 2 )
 custom_constants/minimum_spaces = 1
 expand_to_text_length = true
 
-[node name="LineEdit2" type="LineEdit" parent="VBoxContainer/HBoxContainer4/VBoxContainer2/outputs/VBoxContainer"]
+[node name="LineEdit2" type="LineEdit" parent="HBoxContainer/VBoxContainer/HBoxContainer4/VBoxContainer2/outputs/VBoxContainer"]
 margin_top = 46.0
 margin_right = 18.0
 margin_bottom = 70.0
@@ -547,7 +578,7 @@ rect_min_size = Vector2( 2, 2 )
 custom_constants/minimum_spaces = 2
 expand_to_text_length = true
 
-[node name="LineEdit3" type="LineEdit" parent="VBoxContainer/HBoxContainer4/VBoxContainer2/outputs/VBoxContainer"]
+[node name="LineEdit3" type="LineEdit" parent="HBoxContainer/VBoxContainer/HBoxContainer4/VBoxContainer2/outputs/VBoxContainer"]
 margin_top = 74.0
 margin_right = 18.0
 margin_bottom = 98.0
@@ -555,7 +586,7 @@ rect_min_size = Vector2( 2, 2 )
 custom_constants/minimum_spaces = 2
 expand_to_text_length = true
 
-[node name="LineEdit4" type="LineEdit" parent="VBoxContainer/HBoxContainer4/VBoxContainer2/outputs/VBoxContainer"]
+[node name="LineEdit4" type="LineEdit" parent="HBoxContainer/VBoxContainer/HBoxContainer4/VBoxContainer2/outputs/VBoxContainer"]
 margin_top = 102.0
 margin_right = 18.0
 margin_bottom = 126.0
@@ -563,20 +594,20 @@ rect_min_size = Vector2( 2, 2 )
 custom_constants/minimum_spaces = 2
 expand_to_text_length = true
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="VBoxContainer/HBoxContainer4/VBoxContainer2/outputs"]
+[node name="VBoxContainer2" type="VBoxContainer" parent="HBoxContainer/VBoxContainer/HBoxContainer4/VBoxContainer2/outputs"]
 visible = false
 margin_left = 30.0
 margin_right = 48.0
 margin_bottom = 126.0
 
-[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer4/VBoxContainer2/outputs/VBoxContainer2"]
+[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer/HBoxContainer4/VBoxContainer2/outputs/VBoxContainer2"]
 margin_right = 18.0
 margin_bottom = 14.0
 rect_min_size = Vector2( 2, 2 )
 text = "2"
 align = 1
 
-[node name="LineEdit" type="LineEdit" parent="VBoxContainer/HBoxContainer4/VBoxContainer2/outputs/VBoxContainer2"]
+[node name="LineEdit" type="LineEdit" parent="HBoxContainer/VBoxContainer/HBoxContainer4/VBoxContainer2/outputs/VBoxContainer2"]
 margin_top = 18.0
 margin_right = 18.0
 margin_bottom = 42.0
@@ -584,7 +615,7 @@ rect_min_size = Vector2( 2, 2 )
 custom_constants/minimum_spaces = 1
 expand_to_text_length = true
 
-[node name="LineEdit2" type="LineEdit" parent="VBoxContainer/HBoxContainer4/VBoxContainer2/outputs/VBoxContainer2"]
+[node name="LineEdit2" type="LineEdit" parent="HBoxContainer/VBoxContainer/HBoxContainer4/VBoxContainer2/outputs/VBoxContainer2"]
 margin_top = 46.0
 margin_right = 18.0
 margin_bottom = 70.0
@@ -592,7 +623,7 @@ rect_min_size = Vector2( 2, 2 )
 custom_constants/minimum_spaces = 2
 expand_to_text_length = true
 
-[node name="LineEdit3" type="LineEdit" parent="VBoxContainer/HBoxContainer4/VBoxContainer2/outputs/VBoxContainer2"]
+[node name="LineEdit3" type="LineEdit" parent="HBoxContainer/VBoxContainer/HBoxContainer4/VBoxContainer2/outputs/VBoxContainer2"]
 margin_top = 74.0
 margin_right = 18.0
 margin_bottom = 98.0
@@ -600,7 +631,7 @@ rect_min_size = Vector2( 2, 2 )
 custom_constants/minimum_spaces = 2
 expand_to_text_length = true
 
-[node name="LineEdit4" type="LineEdit" parent="VBoxContainer/HBoxContainer4/VBoxContainer2/outputs/VBoxContainer2"]
+[node name="LineEdit4" type="LineEdit" parent="HBoxContainer/VBoxContainer/HBoxContainer4/VBoxContainer2/outputs/VBoxContainer2"]
 margin_top = 102.0
 margin_right = 18.0
 margin_bottom = 126.0
@@ -608,20 +639,20 @@ rect_min_size = Vector2( 2, 2 )
 custom_constants/minimum_spaces = 2
 expand_to_text_length = true
 
-[node name="VBoxContainer3" type="VBoxContainer" parent="VBoxContainer/HBoxContainer4/VBoxContainer2/outputs"]
+[node name="VBoxContainer3" type="VBoxContainer" parent="HBoxContainer/VBoxContainer/HBoxContainer4/VBoxContainer2/outputs"]
 visible = false
 margin_left = 44.0
 margin_right = 62.0
 margin_bottom = 126.0
 
-[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer4/VBoxContainer2/outputs/VBoxContainer3"]
+[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer/HBoxContainer4/VBoxContainer2/outputs/VBoxContainer3"]
 margin_right = 18.0
 margin_bottom = 14.0
 rect_min_size = Vector2( 2, 2 )
 text = "3"
 align = 1
 
-[node name="LineEdit" type="LineEdit" parent="VBoxContainer/HBoxContainer4/VBoxContainer2/outputs/VBoxContainer3"]
+[node name="LineEdit" type="LineEdit" parent="HBoxContainer/VBoxContainer/HBoxContainer4/VBoxContainer2/outputs/VBoxContainer3"]
 margin_top = 18.0
 margin_right = 18.0
 margin_bottom = 42.0
@@ -629,7 +660,7 @@ rect_min_size = Vector2( 2, 2 )
 custom_constants/minimum_spaces = 1
 expand_to_text_length = true
 
-[node name="LineEdit2" type="LineEdit" parent="VBoxContainer/HBoxContainer4/VBoxContainer2/outputs/VBoxContainer3"]
+[node name="LineEdit2" type="LineEdit" parent="HBoxContainer/VBoxContainer/HBoxContainer4/VBoxContainer2/outputs/VBoxContainer3"]
 margin_top = 46.0
 margin_right = 18.0
 margin_bottom = 70.0
@@ -637,7 +668,7 @@ rect_min_size = Vector2( 2, 2 )
 custom_constants/minimum_spaces = 2
 expand_to_text_length = true
 
-[node name="LineEdit3" type="LineEdit" parent="VBoxContainer/HBoxContainer4/VBoxContainer2/outputs/VBoxContainer3"]
+[node name="LineEdit3" type="LineEdit" parent="HBoxContainer/VBoxContainer/HBoxContainer4/VBoxContainer2/outputs/VBoxContainer3"]
 margin_top = 74.0
 margin_right = 18.0
 margin_bottom = 98.0
@@ -645,7 +676,7 @@ rect_min_size = Vector2( 2, 2 )
 custom_constants/minimum_spaces = 2
 expand_to_text_length = true
 
-[node name="LineEdit4" type="LineEdit" parent="VBoxContainer/HBoxContainer4/VBoxContainer2/outputs/VBoxContainer3"]
+[node name="LineEdit4" type="LineEdit" parent="HBoxContainer/VBoxContainer/HBoxContainer4/VBoxContainer2/outputs/VBoxContainer3"]
 margin_top = 102.0
 margin_right = 18.0
 margin_bottom = 126.0
@@ -653,20 +684,20 @@ rect_min_size = Vector2( 2, 2 )
 custom_constants/minimum_spaces = 2
 expand_to_text_length = true
 
-[node name="VBoxContainer4" type="VBoxContainer" parent="VBoxContainer/HBoxContainer4/VBoxContainer2/outputs"]
+[node name="VBoxContainer4" type="VBoxContainer" parent="HBoxContainer/VBoxContainer/HBoxContainer4/VBoxContainer2/outputs"]
 visible = false
 margin_left = 66.0
 margin_right = 84.0
 margin_bottom = 126.0
 
-[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer4/VBoxContainer2/outputs/VBoxContainer4"]
+[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer/HBoxContainer4/VBoxContainer2/outputs/VBoxContainer4"]
 margin_right = 18.0
 margin_bottom = 14.0
 rect_min_size = Vector2( 2, 2 )
 text = "4"
 align = 1
 
-[node name="LineEdit" type="LineEdit" parent="VBoxContainer/HBoxContainer4/VBoxContainer2/outputs/VBoxContainer4"]
+[node name="LineEdit" type="LineEdit" parent="HBoxContainer/VBoxContainer/HBoxContainer4/VBoxContainer2/outputs/VBoxContainer4"]
 margin_top = 18.0
 margin_right = 18.0
 margin_bottom = 42.0
@@ -674,7 +705,7 @@ rect_min_size = Vector2( 2, 2 )
 custom_constants/minimum_spaces = 1
 expand_to_text_length = true
 
-[node name="LineEdit2" type="LineEdit" parent="VBoxContainer/HBoxContainer4/VBoxContainer2/outputs/VBoxContainer4"]
+[node name="LineEdit2" type="LineEdit" parent="HBoxContainer/VBoxContainer/HBoxContainer4/VBoxContainer2/outputs/VBoxContainer4"]
 margin_top = 46.0
 margin_right = 18.0
 margin_bottom = 70.0
@@ -682,7 +713,7 @@ rect_min_size = Vector2( 2, 2 )
 custom_constants/minimum_spaces = 2
 expand_to_text_length = true
 
-[node name="LineEdit3" type="LineEdit" parent="VBoxContainer/HBoxContainer4/VBoxContainer2/outputs/VBoxContainer4"]
+[node name="LineEdit3" type="LineEdit" parent="HBoxContainer/VBoxContainer/HBoxContainer4/VBoxContainer2/outputs/VBoxContainer4"]
 margin_top = 74.0
 margin_right = 18.0
 margin_bottom = 98.0
@@ -690,7 +721,7 @@ rect_min_size = Vector2( 2, 2 )
 custom_constants/minimum_spaces = 2
 expand_to_text_length = true
 
-[node name="LineEdit4" type="LineEdit" parent="VBoxContainer/HBoxContainer4/VBoxContainer2/outputs/VBoxContainer4"]
+[node name="LineEdit4" type="LineEdit" parent="HBoxContainer/VBoxContainer/HBoxContainer4/VBoxContainer2/outputs/VBoxContainer4"]
 margin_top = 102.0
 margin_right = 18.0
 margin_bottom = 126.0
@@ -698,20 +729,20 @@ rect_min_size = Vector2( 2, 2 )
 custom_constants/minimum_spaces = 2
 expand_to_text_length = true
 
-[node name="VBoxContainer5" type="VBoxContainer" parent="VBoxContainer/HBoxContainer4/VBoxContainer2/outputs"]
+[node name="VBoxContainer5" type="VBoxContainer" parent="HBoxContainer/VBoxContainer/HBoxContainer4/VBoxContainer2/outputs"]
 visible = false
 margin_left = 88.0
 margin_right = 106.0
 margin_bottom = 126.0
 
-[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer4/VBoxContainer2/outputs/VBoxContainer5"]
+[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer/HBoxContainer4/VBoxContainer2/outputs/VBoxContainer5"]
 margin_right = 18.0
 margin_bottom = 14.0
 rect_min_size = Vector2( 2, 2 )
 text = "5"
 align = 1
 
-[node name="LineEdit" type="LineEdit" parent="VBoxContainer/HBoxContainer4/VBoxContainer2/outputs/VBoxContainer5"]
+[node name="LineEdit" type="LineEdit" parent="HBoxContainer/VBoxContainer/HBoxContainer4/VBoxContainer2/outputs/VBoxContainer5"]
 margin_top = 18.0
 margin_right = 18.0
 margin_bottom = 42.0
@@ -719,7 +750,7 @@ rect_min_size = Vector2( 2, 2 )
 custom_constants/minimum_spaces = 1
 expand_to_text_length = true
 
-[node name="LineEdit2" type="LineEdit" parent="VBoxContainer/HBoxContainer4/VBoxContainer2/outputs/VBoxContainer5"]
+[node name="LineEdit2" type="LineEdit" parent="HBoxContainer/VBoxContainer/HBoxContainer4/VBoxContainer2/outputs/VBoxContainer5"]
 margin_top = 46.0
 margin_right = 18.0
 margin_bottom = 70.0
@@ -727,7 +758,7 @@ rect_min_size = Vector2( 2, 2 )
 custom_constants/minimum_spaces = 2
 expand_to_text_length = true
 
-[node name="LineEdit3" type="LineEdit" parent="VBoxContainer/HBoxContainer4/VBoxContainer2/outputs/VBoxContainer5"]
+[node name="LineEdit3" type="LineEdit" parent="HBoxContainer/VBoxContainer/HBoxContainer4/VBoxContainer2/outputs/VBoxContainer5"]
 margin_top = 74.0
 margin_right = 18.0
 margin_bottom = 98.0
@@ -735,7 +766,7 @@ rect_min_size = Vector2( 2, 2 )
 custom_constants/minimum_spaces = 2
 expand_to_text_length = true
 
-[node name="LineEdit4" type="LineEdit" parent="VBoxContainer/HBoxContainer4/VBoxContainer2/outputs/VBoxContainer5"]
+[node name="LineEdit4" type="LineEdit" parent="HBoxContainer/VBoxContainer/HBoxContainer4/VBoxContainer2/outputs/VBoxContainer5"]
 margin_top = 102.0
 margin_right = 18.0
 margin_bottom = 126.0
@@ -743,20 +774,20 @@ rect_min_size = Vector2( 2, 2 )
 custom_constants/minimum_spaces = 2
 expand_to_text_length = true
 
-[node name="VBoxContainer6" type="VBoxContainer" parent="VBoxContainer/HBoxContainer4/VBoxContainer2/outputs"]
+[node name="VBoxContainer6" type="VBoxContainer" parent="HBoxContainer/VBoxContainer/HBoxContainer4/VBoxContainer2/outputs"]
 visible = false
 margin_left = 110.0
 margin_right = 128.0
 margin_bottom = 126.0
 
-[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer4/VBoxContainer2/outputs/VBoxContainer6"]
+[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer/HBoxContainer4/VBoxContainer2/outputs/VBoxContainer6"]
 margin_right = 18.0
 margin_bottom = 14.0
 rect_min_size = Vector2( 2, 2 )
 text = "6"
 align = 1
 
-[node name="LineEdit" type="LineEdit" parent="VBoxContainer/HBoxContainer4/VBoxContainer2/outputs/VBoxContainer6"]
+[node name="LineEdit" type="LineEdit" parent="HBoxContainer/VBoxContainer/HBoxContainer4/VBoxContainer2/outputs/VBoxContainer6"]
 margin_top = 18.0
 margin_right = 18.0
 margin_bottom = 42.0
@@ -764,7 +795,7 @@ rect_min_size = Vector2( 2, 2 )
 custom_constants/minimum_spaces = 1
 expand_to_text_length = true
 
-[node name="LineEdit2" type="LineEdit" parent="VBoxContainer/HBoxContainer4/VBoxContainer2/outputs/VBoxContainer6"]
+[node name="LineEdit2" type="LineEdit" parent="HBoxContainer/VBoxContainer/HBoxContainer4/VBoxContainer2/outputs/VBoxContainer6"]
 margin_top = 46.0
 margin_right = 18.0
 margin_bottom = 70.0
@@ -772,7 +803,7 @@ rect_min_size = Vector2( 2, 2 )
 custom_constants/minimum_spaces = 2
 expand_to_text_length = true
 
-[node name="LineEdit3" type="LineEdit" parent="VBoxContainer/HBoxContainer4/VBoxContainer2/outputs/VBoxContainer6"]
+[node name="LineEdit3" type="LineEdit" parent="HBoxContainer/VBoxContainer/HBoxContainer4/VBoxContainer2/outputs/VBoxContainer6"]
 margin_top = 74.0
 margin_right = 18.0
 margin_bottom = 98.0
@@ -780,7 +811,7 @@ rect_min_size = Vector2( 2, 2 )
 custom_constants/minimum_spaces = 2
 expand_to_text_length = true
 
-[node name="LineEdit4" type="LineEdit" parent="VBoxContainer/HBoxContainer4/VBoxContainer2/outputs/VBoxContainer6"]
+[node name="LineEdit4" type="LineEdit" parent="HBoxContainer/VBoxContainer/HBoxContainer4/VBoxContainer2/outputs/VBoxContainer6"]
 margin_top = 102.0
 margin_right = 18.0
 margin_bottom = 126.0
@@ -788,20 +819,20 @@ rect_min_size = Vector2( 2, 2 )
 custom_constants/minimum_spaces = 2
 expand_to_text_length = true
 
-[node name="VBoxContainer7" type="VBoxContainer" parent="VBoxContainer/HBoxContainer4/VBoxContainer2/outputs"]
+[node name="VBoxContainer7" type="VBoxContainer" parent="HBoxContainer/VBoxContainer/HBoxContainer4/VBoxContainer2/outputs"]
 visible = false
 margin_left = 132.0
 margin_right = 150.0
 margin_bottom = 126.0
 
-[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer4/VBoxContainer2/outputs/VBoxContainer7"]
+[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer/HBoxContainer4/VBoxContainer2/outputs/VBoxContainer7"]
 margin_right = 18.0
 margin_bottom = 14.0
 rect_min_size = Vector2( 2, 2 )
 text = "7"
 align = 1
 
-[node name="LineEdit" type="LineEdit" parent="VBoxContainer/HBoxContainer4/VBoxContainer2/outputs/VBoxContainer7"]
+[node name="LineEdit" type="LineEdit" parent="HBoxContainer/VBoxContainer/HBoxContainer4/VBoxContainer2/outputs/VBoxContainer7"]
 margin_top = 18.0
 margin_right = 18.0
 margin_bottom = 42.0
@@ -809,7 +840,7 @@ rect_min_size = Vector2( 2, 2 )
 custom_constants/minimum_spaces = 1
 expand_to_text_length = true
 
-[node name="LineEdit2" type="LineEdit" parent="VBoxContainer/HBoxContainer4/VBoxContainer2/outputs/VBoxContainer7"]
+[node name="LineEdit2" type="LineEdit" parent="HBoxContainer/VBoxContainer/HBoxContainer4/VBoxContainer2/outputs/VBoxContainer7"]
 margin_top = 46.0
 margin_right = 18.0
 margin_bottom = 70.0
@@ -817,7 +848,7 @@ rect_min_size = Vector2( 2, 2 )
 custom_constants/minimum_spaces = 2
 expand_to_text_length = true
 
-[node name="LineEdit3" type="LineEdit" parent="VBoxContainer/HBoxContainer4/VBoxContainer2/outputs/VBoxContainer7"]
+[node name="LineEdit3" type="LineEdit" parent="HBoxContainer/VBoxContainer/HBoxContainer4/VBoxContainer2/outputs/VBoxContainer7"]
 margin_top = 74.0
 margin_right = 18.0
 margin_bottom = 98.0
@@ -825,7 +856,7 @@ rect_min_size = Vector2( 2, 2 )
 custom_constants/minimum_spaces = 2
 expand_to_text_length = true
 
-[node name="LineEdit4" type="LineEdit" parent="VBoxContainer/HBoxContainer4/VBoxContainer2/outputs/VBoxContainer7"]
+[node name="LineEdit4" type="LineEdit" parent="HBoxContainer/VBoxContainer/HBoxContainer4/VBoxContainer2/outputs/VBoxContainer7"]
 margin_top = 102.0
 margin_right = 18.0
 margin_bottom = 126.0
@@ -833,20 +864,20 @@ rect_min_size = Vector2( 2, 2 )
 custom_constants/minimum_spaces = 2
 expand_to_text_length = true
 
-[node name="VBoxContainer8" type="VBoxContainer" parent="VBoxContainer/HBoxContainer4/VBoxContainer2/outputs"]
+[node name="VBoxContainer8" type="VBoxContainer" parent="HBoxContainer/VBoxContainer/HBoxContainer4/VBoxContainer2/outputs"]
 visible = false
 margin_left = 154.0
 margin_right = 172.0
 margin_bottom = 126.0
 
-[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer4/VBoxContainer2/outputs/VBoxContainer8"]
+[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer/HBoxContainer4/VBoxContainer2/outputs/VBoxContainer8"]
 margin_right = 18.0
 margin_bottom = 14.0
 rect_min_size = Vector2( 2, 2 )
 text = "8"
 align = 1
 
-[node name="LineEdit" type="LineEdit" parent="VBoxContainer/HBoxContainer4/VBoxContainer2/outputs/VBoxContainer8"]
+[node name="LineEdit" type="LineEdit" parent="HBoxContainer/VBoxContainer/HBoxContainer4/VBoxContainer2/outputs/VBoxContainer8"]
 margin_top = 18.0
 margin_right = 18.0
 margin_bottom = 42.0
@@ -854,7 +885,7 @@ rect_min_size = Vector2( 2, 2 )
 custom_constants/minimum_spaces = 1
 expand_to_text_length = true
 
-[node name="LineEdit2" type="LineEdit" parent="VBoxContainer/HBoxContainer4/VBoxContainer2/outputs/VBoxContainer8"]
+[node name="LineEdit2" type="LineEdit" parent="HBoxContainer/VBoxContainer/HBoxContainer4/VBoxContainer2/outputs/VBoxContainer8"]
 margin_top = 46.0
 margin_right = 18.0
 margin_bottom = 70.0
@@ -862,7 +893,7 @@ rect_min_size = Vector2( 2, 2 )
 custom_constants/minimum_spaces = 2
 expand_to_text_length = true
 
-[node name="LineEdit3" type="LineEdit" parent="VBoxContainer/HBoxContainer4/VBoxContainer2/outputs/VBoxContainer8"]
+[node name="LineEdit3" type="LineEdit" parent="HBoxContainer/VBoxContainer/HBoxContainer4/VBoxContainer2/outputs/VBoxContainer8"]
 margin_top = 74.0
 margin_right = 18.0
 margin_bottom = 98.0
@@ -870,7 +901,7 @@ rect_min_size = Vector2( 2, 2 )
 custom_constants/minimum_spaces = 2
 expand_to_text_length = true
 
-[node name="LineEdit4" type="LineEdit" parent="VBoxContainer/HBoxContainer4/VBoxContainer2/outputs/VBoxContainer8"]
+[node name="LineEdit4" type="LineEdit" parent="HBoxContainer/VBoxContainer/HBoxContainer4/VBoxContainer2/outputs/VBoxContainer8"]
 margin_top = 102.0
 margin_right = 18.0
 margin_bottom = 126.0
@@ -878,20 +909,20 @@ rect_min_size = Vector2( 2, 2 )
 custom_constants/minimum_spaces = 2
 expand_to_text_length = true
 
-[node name="VBoxContainer9" type="VBoxContainer" parent="VBoxContainer/HBoxContainer4/VBoxContainer2/outputs"]
+[node name="VBoxContainer9" type="VBoxContainer" parent="HBoxContainer/VBoxContainer/HBoxContainer4/VBoxContainer2/outputs"]
 visible = false
 margin_left = 176.0
 margin_right = 194.0
 margin_bottom = 126.0
 
-[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer4/VBoxContainer2/outputs/VBoxContainer9"]
+[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer/HBoxContainer4/VBoxContainer2/outputs/VBoxContainer9"]
 margin_right = 18.0
 margin_bottom = 14.0
 rect_min_size = Vector2( 2, 2 )
 text = "9"
 align = 1
 
-[node name="LineEdit" type="LineEdit" parent="VBoxContainer/HBoxContainer4/VBoxContainer2/outputs/VBoxContainer9"]
+[node name="LineEdit" type="LineEdit" parent="HBoxContainer/VBoxContainer/HBoxContainer4/VBoxContainer2/outputs/VBoxContainer9"]
 margin_top = 18.0
 margin_right = 18.0
 margin_bottom = 42.0
@@ -899,7 +930,7 @@ rect_min_size = Vector2( 2, 2 )
 custom_constants/minimum_spaces = 1
 expand_to_text_length = true
 
-[node name="LineEdit2" type="LineEdit" parent="VBoxContainer/HBoxContainer4/VBoxContainer2/outputs/VBoxContainer9"]
+[node name="LineEdit2" type="LineEdit" parent="HBoxContainer/VBoxContainer/HBoxContainer4/VBoxContainer2/outputs/VBoxContainer9"]
 margin_top = 46.0
 margin_right = 18.0
 margin_bottom = 70.0
@@ -907,7 +938,7 @@ rect_min_size = Vector2( 2, 2 )
 custom_constants/minimum_spaces = 2
 expand_to_text_length = true
 
-[node name="LineEdit3" type="LineEdit" parent="VBoxContainer/HBoxContainer4/VBoxContainer2/outputs/VBoxContainer9"]
+[node name="LineEdit3" type="LineEdit" parent="HBoxContainer/VBoxContainer/HBoxContainer4/VBoxContainer2/outputs/VBoxContainer9"]
 margin_top = 74.0
 margin_right = 18.0
 margin_bottom = 98.0
@@ -915,7 +946,7 @@ rect_min_size = Vector2( 2, 2 )
 custom_constants/minimum_spaces = 2
 expand_to_text_length = true
 
-[node name="LineEdit4" type="LineEdit" parent="VBoxContainer/HBoxContainer4/VBoxContainer2/outputs/VBoxContainer9"]
+[node name="LineEdit4" type="LineEdit" parent="HBoxContainer/VBoxContainer/HBoxContainer4/VBoxContainer2/outputs/VBoxContainer9"]
 margin_top = 102.0
 margin_right = 18.0
 margin_bottom = 126.0
@@ -923,19 +954,19 @@ rect_min_size = Vector2( 2, 2 )
 custom_constants/minimum_spaces = 2
 expand_to_text_length = true
 
-[node name="HBoxContainer5" type="HBoxContainer" parent="VBoxContainer"]
-margin_top = 204.0
-margin_right = 165.0
-margin_bottom = 224.0
+[node name="HBoxContainer5" type="HBoxContainer" parent="HBoxContainer/VBoxContainer"]
+margin_top = 148.0
+margin_right = 144.0
+margin_bottom = 168.0
 
-[node name="addOneLine" type="Button" parent="VBoxContainer/HBoxContainer5"]
+[node name="addOneLine" type="Button" parent="HBoxContainer/VBoxContainer/HBoxContainer5"]
 margin_right = 70.0
 margin_bottom = 20.0
 rect_min_size = Vector2( 70, 0 )
 size_flags_horizontal = 0
 text = "+"
 
-[node name="deleteOneLine" type="Button" parent="VBoxContainer/HBoxContainer5"]
+[node name="deleteOneLine" type="Button" parent="HBoxContainer/VBoxContainer/HBoxContainer5"]
 margin_left = 74.0
 margin_right = 144.0
 margin_bottom = 20.0
@@ -943,19 +974,13 @@ rect_min_size = Vector2( 70, 0 )
 size_flags_horizontal = 0
 text = "-"
 
-[node name="run" type="Button" parent="VBoxContainer"]
-margin_top = 228.0
-margin_right = 165.0
-margin_bottom = 248.0
-size_flags_horizontal = 3
-size_flags_vertical = 0
-text = "run"
-
-[connection signal="text_changed" from="HBoxContainer/anzahlHiddenlayer" to="." method="_on_anzahlHiddenlayer_text_changed"]
-[connection signal="text_changed" from="VBoxContainer/HBoxContainer2/anzahlInputs" to="." method="_on_anzahlInputs_text_changed"]
-[connection signal="text_changed" from="VBoxContainer/VBoxContainer2/neuronenProHiddenlayer" to="." method="_on_neuronenProHiddenlayer_text_changed"]
-[connection signal="text_changed" from="VBoxContainer/HBoxContainer3/anzahlOutputs" to="." method="_on_anzahlOutputs_text_changed"]
-[connection signal="text_entered" from="VBoxContainer/HBoxContainer3/anzahlOutputs" to="." method="_on_anzahlOutputs_text_entered"]
-[connection signal="pressed" from="VBoxContainer/HBoxContainer5/addOneLine" to="." method="_on_addOneLine_pressed"]
-[connection signal="pressed" from="VBoxContainer/HBoxContainer5/deleteOneLine" to="." method="_on_deleteOneLine_pressed"]
-[connection signal="pressed" from="VBoxContainer/run" to="." method="_on_run_pressed"]
+[connection signal="text_changed" from="HBoxContainer/ValInput/HBoxContainer/anzahlHiddenlayer" to="." method="_on_anzahlHiddenlayer_text_changed"]
+[connection signal="text_changed" from="HBoxContainer/ValInput/HBoxContainer2/anzahlInputs" to="." method="_on_anzahlInputs_text_changed"]
+[connection signal="text_changed" from="HBoxContainer/ValInput/VBoxContainer2/neuronenProHiddenlayer" to="." method="_on_neuronenProHiddenlayer_text_changed"]
+[connection signal="text_changed" from="HBoxContainer/ValInput/HBoxContainer3/anzahlOutputs" to="." method="_on_anzahlOutputs_text_changed"]
+[connection signal="text_entered" from="HBoxContainer/ValInput/HBoxContainer3/anzahlOutputs" to="." method="_on_anzahlOutputs_text_entered"]
+[connection signal="text_changed" from="HBoxContainer/ValInput/HBoxContainer4/stepSize" to="." method="_on_stepSize_text_changed"]
+[connection signal="text_entered" from="HBoxContainer/ValInput/HBoxContainer4/stepSize" to="." method="_on_stepSize_text_entered"]
+[connection signal="pressed" from="HBoxContainer/ValInput/run" to="." method="_on_run_pressed"]
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/HBoxContainer5/addOneLine" to="." method="_on_addOneLine_pressed"]
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/HBoxContainer5/deleteOneLine" to="." method="_on_deleteOneLine_pressed"]

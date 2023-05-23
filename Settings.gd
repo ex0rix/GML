@@ -8,14 +8,17 @@ extends Control
 export (NodePath) var architectureDiagrammPath
 var architectureDiagramm : Node
 
+signal run(nLayer, stepSize)
+
 var anzahlHiddenlayer = 0
 var anzahlInputs = 1
 var anzahlOutputs = 1
 var neuronenProHiddenlayer = []
 var inputs = []
 var outputs = []
-onready var inputContainer = $VBoxContainer/HBoxContainer4/VBoxContainer/Inputs
-onready var outputContainer = $VBoxContainer/HBoxContainer4/VBoxContainer2/outputs
+var stepSize = 0.0
+onready var inputContainer = $HBoxContainer/VBoxContainer/HBoxContainer4/VBoxContainer/Inputs
+onready var outputContainer = $HBoxContainer/VBoxContainer/HBoxContainer4/VBoxContainer2/outputs
 
 func _ready():
 	architectureDiagramm = get_node(architectureDiagrammPath)
@@ -81,7 +84,7 @@ func _on_neuronenProHiddenlayer_text_changed(new_text):
 func _on_run_pressed():
 	inputs.clear()
 	outputs.clear()
-	print("TESSST "+ String(neuronenProHiddenlayer))
+	print("TEST "+ String(neuronenProHiddenlayer))
 	var nPH = []
 	nPH.append_array(neuronenProHiddenlayer)
 	for i in anzahlInputs:
@@ -95,15 +98,12 @@ func _on_run_pressed():
 	var aProSpalte= []
 	aProSpalte.append(anzahlInputs)
 
-	print("asssssafasf:"+String(anzahlHiddenlayer))
 	for i in anzahlHiddenlayer:
 		if i > nPH.size()-1:
 			nPH.append(1)
 		if i == anzahlHiddenlayer-1 && nPH.size()-(i+1) >0:
-			print("qaaaaaaaaaaaaasdasdddddd")
 			print(i)
 			print(nPH.size()-(i+1))
-			print("qaaaaaaaaaaaaasdasdddddd")
 			for j in neuronenProHiddenlayer.size()-(i+1):
 				nPH.remove(nPH.size()-1)
 				#nPH.pop_back()
@@ -121,7 +121,6 @@ func _on_run_pressed():
 func _on_addOneLine_pressed():
 	
 	for i in inputContainer.get_child_count():
-		print("asdasdaa")
 		inputContainer.get_child(i).add_child( inputContainer.get_child(i).get_child(1).duplicate())
 	for i in outputContainer.get_child_count():
 		outputContainer.get_child(i).add_child( outputContainer.get_child(i).get_child(1).duplicate())
@@ -134,3 +133,11 @@ func _on_deleteOneLine_pressed():
 			inputContainer.get_child(i).get_child(inputContainer.get_child(i).get_child_count()-1).queue_free()
 		for i in outputContainer.get_child_count():
 			outputContainer.get_child(i).get_child(outputContainer.get_child(i).get_child_count()-1).queue_free()
+
+
+func _on_stepSize_text_changed(new_text):
+	var stepSize = int(new_text)
+
+
+func _on_stepSize_text_entered(new_text):
+	pass # Replace with function body.
