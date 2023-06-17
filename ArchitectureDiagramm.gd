@@ -76,3 +76,4 @@ func inputchange(inputs,outputs):
 
 func _on_Timer_timeout():
 	drawer.setDrawPoints(Spaltenanzahl,anzahlProSpalte)
+

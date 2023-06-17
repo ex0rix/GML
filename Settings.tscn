@@ -974,6 +974,12 @@ rect_min_size = Vector2( 70, 0 )
 size_flags_horizontal = 0
 text = "-"
 
+[node name="Label" type="Label" parent="HBoxContainer"]
+margin_left = 381.0
+margin_top = 77.0
+margin_right = 381.0
+margin_bottom = 91.0
+
 [connection signal="text_changed" from="HBoxContainer/ValInput/HBoxContainer2/anzahlInputs" to="." method="_on_anzahlInputs_text_changed"]
 [connection signal="text_changed" from="HBoxContainer/ValInput/HBoxContainer/anzahlHiddenlayer" to="." method="_on_anzahlHiddenlayer_text_changed"]
 [connection signal="text_changed" from="HBoxContainer/ValInput/VBoxContainer2/neuronenProHiddenlayer" to="." method="_on_neuronenProHiddenlayer_text_changed"]

@@ -51,6 +51,6 @@ func applyDelta(neuronInputs : Array, stepSize):
 
 func _randomize_weights(stepSize):
 	for i in _weights.size():
-		_weights[i] = clamp(_weights[i] + stepSize * (randf() - 0.5), -5.0, 5.0)
+		_weights[i] = clamp(0.0 + stepSize * (randf() - 0.5), -5.0, 5.0)
 	_bias = clamp(_bias + stepSize * (randf() - 0.5), -5.0, 5.0)
 	_bias = -2.5

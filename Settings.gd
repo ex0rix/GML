@@ -116,8 +116,8 @@ func _on_run_pressed():
 		architectureDiagramm.changeDiagramm(anzahlHiddenlayer+2, aProSpalte)
 	
 	var dataSet = {
-		"inputs" : [],
-		"outputs" : []
+		"inputs" : inputs,
+		"outputs" : outputs
 	}
 	self.emit_signal("run", aProSpalte, stepSize, dataSet)
 

@@ -56,8 +56,8 @@ func backProp(inputValues, costValues):
 		else:
 			for j in _neuronLayers[i-1].size():
 				neuronInputs.append(_neuronLayers[i-1][j].getOutput())
-		if neuronInputs.size() == 1:
-			breakpoint
+#		if neuronInputs.size() == 1:
+#			breakpoint
 		for j in _neuronLayers[i].size():
 			_neuronLayers[i][j].applyDelta(neuronInputs, _stepSize)
 

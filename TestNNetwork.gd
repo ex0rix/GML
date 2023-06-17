@@ -29,7 +29,7 @@ var curDataSet = trainSetXOR
 func _ready():
 	neuralNetwork = NeuralNetwork.new([2, 4, 1], 1.8)
 	#$HSplitContainer2/HSplitContainer/Panel/Settings._on_run_pressed()
-	run = true
+	run = false
 	#seed(42069)
 	randomize()
 	neuralNetwork.radomize_weights(1.9)
@@ -48,14 +48,21 @@ func _process(delta):
 			##Only ONE output at moment TODO array lenght
 			var outputDif = pow(curDataSet["outputs"][i][0] - outputs[0], 2)
 			totalError += outputDif
-		totalError = totalError / nTrainingSets
+		if totalError != 0:
+			totalError = totalError / nTrainingSets
 		
-#		if bestOutputDif > totalError:# || iter % 500 == 0:
-#			bestOutputDif = totalError
-#			##Print debug###
-#			print(iter, ": ", bestOutputDif)
-#			for i in nTrainingSets:
-#				print(curDataSet["inputs"][i], " => ",neuralNetwork.calc(curDataSet["inputs"][i]))
+		if bestOutputDif > totalError:# || iter % 500 == 0:
+			bestOutputDif = totalError
+			##Print debug###
+			#print(iter, ": ", bestOutputDif)
+			var bestLabel = $HSplitContainer2/HSplitContainer/Panel/Settings.get_node("HBoxContainer/Label")
+			bestLabel.text = ""
+			for i in nTrainingSets:
+				
+				bestLabel.text += String(curDataSet["inputs"][i])+ " => "
+				for j in neuralNetwork.calc(curDataSet["inputs"][i]).size():
+					bestLabel.text += "%2.4f" % neuralNetwork.calc(curDataSet["inputs"][i])[j] + "\n"
+				#print(curDataSet["inputs"][i], " => ",neuralNetwork.calc(curDataSet["inputs"][i]))
 		if iter != 0:
 			chartFuncs[0].add_point(iter, totalError)
 		
@@ -88,20 +95,23 @@ func initContext():
 	cp.y_tick_size = 1
 	cp.title = "ML AI fitness over time"
 	cp.x_label = "Iterration"
-	cp.y_label = "Fitness"
+	cp.y_label = "Fit"
 	cp.x_scale = 2
 	cp.y_scale = 2
 	cp.interactive = true # false by default, it allows the chart to create a tooltip to show point values
 	return cp
 
-func _on_HSplitContainer2_dragged(offset):
-	$HSplitContainer2/ScrollContainer/ArchitectureDiagramm.get_child(0).update()
-
 
 func _on_Settings_run(nLayer, stepSize, newDataSet):
 	curDataSet = newDataSet
-	print(nLayer, stepSize)
+	#print("==>", nLayer, stepSize)
 	run = true
 	neuralNetwork = NeuralNetwork.new(nLayer, stepSize)
 	neuralNetwork.radomize_weights(1.9)
 	iter = 0
+	bestOutputDif = 1.0
+
+
+
+func _on_ScrollContainer_resized():
+	$HSplitContainer2/ScrollContainer/ArchitectureDiagramm.get_child(0).update()

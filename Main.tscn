@@ -19,6 +19,8 @@ margin_bottom = 600.0
 rect_clip_content = true
 
 [node name="ArchitectureDiagramm" parent="HSplitContainer2/ScrollContainer" instance=ExtResource( 4 )]
+Spaltenanzahl = 2
+anzahlProSpalte = [ 2, 1 ]
 
 [node name="HSplitContainer" type="VSplitContainer" parent="HSplitContainer2"]
 margin_left = 355.0
@@ -63,7 +65,8 @@ margin_left = 50.0
 margin_top = 50.0
 margin_right = 669.0
 margin_bottom = 170.0
+architectureDiagrammPath = NodePath("../../../ScrollContainer/ArchitectureDiagramm")
 
-[connection signal="dragged" from="HSplitContainer2" to="." method="_on_HSplitContainer2_dragged"]
+[connection signal="resized" from="HSplitContainer2/ScrollContainer" to="." method="_on_ScrollContainer_resized"]
 [connection signal="toggled" from="HSplitContainer2/HSplitContainer/Container/CheckButton" to="." method="_on_CheckButton_toggled"]
 [connection signal="run" from="HSplitContainer2/HSplitContainer/Panel/Settings" to="." method="_on_Settings_run"]
